@@ -10,9 +10,16 @@ import UIKit
 
 class VideoTableViewCell: UITableViewCell {
 
+
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var videoImage: UIImageView!
+    @IBOutlet weak var videoTime: UILabel!
+    @IBOutlet weak var videoTitle: UILabel!
+    @IBOutlet weak var videoSubject: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        logE(any: "awakeFromNib")
+        self.videoView.setViewShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

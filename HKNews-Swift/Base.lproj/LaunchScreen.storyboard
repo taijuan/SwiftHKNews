@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,16 +14,69 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    <view key="view" contentMode="scaleToFill" id="ati-nh-r5e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="welcome_background" translatesAutoresizingMaskIntoConstraints="NO" id="8er-jf-5oq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bD8-PA-cxM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" image="welcome_logo" translatesAutoresizingMaskIntoConstraints="NO" id="aLl-bU-R2d">
+                                        <rect key="frame" x="60" y="0.0" width="294" height="767"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Copyright © 2019 China Daily Hong Kong Limited.All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZy-Lx-Akd">
+                                        <rect key="frame" x="10" y="767" width="394" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="48" id="tdG-BK-zPB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAm-0H-Ym7">
+                                        <rect key="frame" x="0.0" y="808" width="414" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="v2Q-BC-vkk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aLl-bU-R2d" firstAttribute="leading" secondItem="bD8-PA-cxM" secondAttribute="leading" constant="60" id="27V-f0-0gD"/>
+                                    <constraint firstAttribute="trailing" secondItem="aLl-bU-R2d" secondAttribute="trailing" constant="60" id="6zM-5i-Up0"/>
+                                    <constraint firstItem="DAm-0H-Ym7" firstAttribute="leading" secondItem="bD8-PA-cxM" secondAttribute="leading" id="LYk-um-uQ5"/>
+                                    <constraint firstItem="MZy-Lx-Akd" firstAttribute="leading" secondItem="bD8-PA-cxM" secondAttribute="leading" constant="10" id="MiN-MK-Ja9"/>
+                                    <constraint firstAttribute="trailing" secondItem="MZy-Lx-Akd" secondAttribute="trailing" constant="10" id="Qk4-ai-d9o"/>
+                                    <constraint firstAttribute="trailing" secondItem="DAm-0H-Ym7" secondAttribute="trailing" id="c81-Cw-rsk"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8er-jf-5oq" firstAttribute="leading" secondItem="ati-nh-r5e" secondAttribute="leading" id="114-s7-nhc"/>
+                            <constraint firstItem="rra-Cz-5Gh" firstAttribute="bottom" secondItem="bD8-PA-cxM" secondAttribute="bottom" id="5eY-9P-blk"/>
+                            <constraint firstItem="bD8-PA-cxM" firstAttribute="leading" secondItem="rra-Cz-5Gh" secondAttribute="leading" id="Epc-mH-QFS"/>
+                            <constraint firstAttribute="trailing" secondItem="8er-jf-5oq" secondAttribute="trailing" id="Phm-es-wVe"/>
+                            <constraint firstItem="rra-Cz-5Gh" firstAttribute="trailing" secondItem="bD8-PA-cxM" secondAttribute="trailing" id="R5W-eJ-g0R"/>
+                            <constraint firstAttribute="bottom" secondItem="8er-jf-5oq" secondAttribute="bottom" id="VeN-QV-o6u"/>
+                            <constraint firstItem="8er-jf-5oq" firstAttribute="top" secondItem="ati-nh-r5e" secondAttribute="top" id="n1b-Rw-9Q5"/>
+                            <constraint firstItem="bD8-PA-cxM" firstAttribute="top" secondItem="rra-Cz-5Gh" secondAttribute="top" id="oN8-Ce-J5d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rra-Cz-5Gh"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="374.18478260869568"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="welcome_background" width="1080" height="1920"/>
+        <image name="welcome_logo" width="753" height="184"/>
+    </resources>
 </document>

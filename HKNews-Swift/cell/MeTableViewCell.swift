@@ -10,6 +10,9 @@ import UIKit
 
 class MeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leftIcon: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var rightIcon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

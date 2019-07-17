@@ -8,10 +8,9 @@
 
 import UIKit
 import WebKit
-import RxGesture
 
-class WebViewController: UIViewController {
-
+class NewsDetailViewController: UIViewController {
+    
     private let data:NewsItem
     init(data:NewsItem){
         self.data = data
@@ -26,24 +25,15 @@ class WebViewController: UIViewController {
         self.view.backgroundColor = .white
         let webView = WKWebView()
         self.view.addSubview(webView)
-        webView.snp.makeConstraints{ make in
-            make.height.equalTo(height()-top()-tabBarHeight()-bottom())
-            make.left.right.equalToSuperview().offset(0)
-            make.top.equalToSuperview().offset(top())
-        }
+        webView.frame = CGRect(x: 0, y: statusHeight, width: width(), height: height()-statusHeight-tabBarHeight()-bottom())
         let bottomView = UIView()
         self.view.addSubview(bottomView)
         bottomView.backgroundColor = .white
-        bottomView.snp.makeConstraints{make in
-            make.height.equalTo(tabBarHeight()+bottom())
-            make.left.right.equalToSuperview().offset(0)
-            make.bottom.equalToSuperview().offset(0)
-        }
+        bottomView.frame = CGRect(x: 0, y: height()-tabBarHeight()-bottom(), width: width(), height: tabBarHeight()+bottom())
+        
         let backImageView = UIImageView()
         bottomView.addSubview(backImageView)
-        backImageView.snp.makeConstraints{make in
-            make.width.height.equalTo(48)
-        }
+        backImageView.frame = CGRect(x: 0, y: 0, width: tabBarHeight(), height: tabBarHeight())
         backImageView.contentMode = .center
         backImageView.image = UIImage(named: "back")?.resize(width: 16, height: 28)
         let tap = UITapGestureRecognizer(target: self, action: #selector(back))
@@ -52,6 +42,6 @@ class WebViewController: UIViewController {
         webView.load(URLRequest.init(url: URL(string: "\(ImageDNS)\(self.data.murl)")!))
     }
     @objc func back(){
-        self.dismiss(animated: true, completion: nil)
+        pop(animated: true)
     }
 }

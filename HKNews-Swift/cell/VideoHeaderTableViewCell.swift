@@ -9,10 +9,13 @@
 import UIKit
 
 class VideoHeaderTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var videoHeaderView: UIView!
+    @IBOutlet weak var videoHeaderTitle: UILabel!
+    @IBOutlet weak var videoHeaderContent: UILabel!
+    @IBOutlet weak var videoHeaderSubject: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.videoHeaderView.setViewShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

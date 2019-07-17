@@ -6,4 +6,36 @@
 //  Copyright © 2019 郑泰捐. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+func currentViewController()->UIViewController?{
+    return UIViewController.currentViewController()
+}
+
+func pop(animated: Bool){
+    currentViewController()?.navigationController?.popViewController(animated: animated)
+}
+
+func popAndPush(_ viewController:UIViewController,animated:Bool){
+    currentViewController()?.navigationController?.popViewController(animated: true)
+    currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)
+}
+
+func push(_ viewController:UIViewController,animated:Bool){
+    currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)
+}
+
+extension UIViewController {
+    class func currentViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return currentViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            return currentViewController(base: tab.selectedViewController)
+        }
+        if let presented = base?.presentedViewController {
+            return currentViewController(base: presented)
+        }
+        return base
+    }
+}
