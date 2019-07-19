@@ -9,16 +9,20 @@
 import UIKit
 
 class HomeViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = [
-            NewsViewController(isNews: true),
-            NewsViewController(isNews: false),
-            PaperViewController(),
-            VideoViewController(),
-            MineViewController()
-        ]
+        let news = NewsViewController(isNews: true)
+        news.tabBarItem.setTabItem(name: "news")
+        let focus = NewsViewController(isNews: false)
+        focus.tabBarItem.setTabItem(name: "focus")
+        let epaper = PaperViewController()
+        epaper.tabBarItem.setTabItem(name: "epaper")
+        let video = VideoViewController()
+        video.tabBarItem.setTabItem(name: "video")
+        let me = MineViewController()
+        me.tabBarItem.setTabItem(name: "me")
+        self.viewControllers = [news,focus,epaper,video,me]
         logE(any: self.view.bounds)
     }
 }

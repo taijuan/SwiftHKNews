@@ -12,5 +12,7 @@ target 'HKNews-Swift' do
   pod 'DNSPageView'
   pod 'FSPagerView'
 #  pod 'SnapKit'
+  pod 'RealmSwift'
   pod 'BMPlayer'
+  pod 'Toast-Swift'
 end

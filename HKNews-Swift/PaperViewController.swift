@@ -18,7 +18,6 @@ class PaperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.tabBarItem.setTabItem(name: "epaper")
         let epaper_background = UIImageView()
         self.view.addSubview(epaper_background)
         epaper_background.frame = CGRect(x: 0, y: 0, width: width(), height: h)

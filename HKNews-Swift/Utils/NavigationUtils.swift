@@ -16,6 +16,9 @@ func pop(animated: Bool){
     currentViewController()?.navigationController?.popViewController(animated: animated)
 }
 
+func popRootController(){
+    currentViewController()?.navigationController?.popToRootViewController(animated: true)
+}
 func popAndPush(_ viewController:UIViewController,animated:Bool){
     currentViewController()?.navigationController?.popViewController(animated: true)
     currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)

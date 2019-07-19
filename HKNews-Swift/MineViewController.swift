@@ -14,7 +14,6 @@ class MineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.tabBarItem.setTabItem(name: "me")
         setHeaderTitleBar(title: "Me")
         self.view.addSubview(tableView)
         tableView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
@@ -58,13 +57,13 @@ extension MineViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = data[indexPath.row]
         if(item === favorites){
-            
+            push(FavoritesViewController(), animated: true)
         }else if(item === facebook){
             push(WebViewController(title: "Facebook", data: facebookDNS), animated: true)
         }else if(item === twitter){
             push(WebViewController(title: "Twitter", data: twitterDNS), animated: true)
         }else if(item === feedback){
-            
+            push(FeedbackViewController(), animated: true)
         }else{
             
         }

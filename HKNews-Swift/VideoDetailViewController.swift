@@ -11,13 +11,18 @@ import RxSwift
 import BMPlayer
 
 class VideoDetailViewController: UIViewController {
-    let detail:NewsItem
-    let tableView = UITableView()
+    private let detail:NewsItem
+    private let tableView = UITableView()
     private var data:Array<NewsItem> = []
-    let videoDetailViewModel:VideoDetailViewModel
-    let disposeBag = DisposeBag()
-    let videoViewHeight = width()*9/16
+    private let videoDetailViewModel:VideoDetailViewModel
+    private let likeViewModel = LikeViewModel()
+    private let favoriteViewModel = FavoriteViewModel()
+    private let disposeBag = DisposeBag()
+    private let videoViewHeight:CGFloat = width()*9/16
     private lazy var player = BMPlayer()
+    private let actionHeight:CGFloat = 44
+    private let favorite = UIImageView()
+    private let like = UIImageView()
     
     init(data:NewsItem){
         self.detail = data
@@ -31,13 +36,74 @@ class VideoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.view.addSubview(tableView)
-        initVideoPlayer()
-        tableView.frame = CGRect(x: 0, y: statusHeight+videoViewHeight, width: width(), height: height()-statusHeight-videoViewHeight-bottom())
         initUITableViewDataSource()
+        initActionView()
+        initVideoPlayer()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.player.play()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        self.player.pause(allowAutoPlay: true)
+        self.player.pause(allowAutoPlay: false)
+    }
+    
+    
+    
+    func initActionView(){
+        let actionView = UIView()
+        actionView.frame = CGRect(x: 0, y: statusHeight+videoViewHeight, width: width(), height: actionHeight)
+        self.view.addSubview(actionView)
+        
+        favorite.frame = CGRect(x: 0, y: 0, width: width()/3, height: actionHeight)
+        actionView.addSubview(favorite)
+        favorite.contentMode = .center
+        favorite.image = UIImage(named: "favorite")?.resize(width: 24, height: 24)
+        favorite.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(favoriteAction)))
+        favorite.isUserInteractionEnabled = true
+        
+        like.frame = CGRect(x: width()/3, y: 0, width: width()/3, height: actionHeight)
+        actionView.addSubview(like)
+        like.contentMode = .center
+        like.image = UIImage(named: "like")?.resize(width: 24, height: 24)
+        like.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(likeAction)))
+        like.isUserInteractionEnabled = true
+        self.favoriteViewModel.isFavorite(self.detail).subscribe(onNext: {data in
+            if data{
+                self.favorite.image = UIImage(named: "favorite_selected")?.resize(width: 24, height: 24)
+            }else{
+                self.favorite.image = UIImage(named: "favorite")?.resize(width: 24, height: 24)
+            }
+        }).disposed(by: disposeBag)
+        let share = UIImageView()
+        share.frame = CGRect(x: width()*2/3, y: 0, width: width()/3, height: actionHeight)
+        actionView.addSubview(share)
+        share.contentMode = .center
+        share.image = UIImage(named: "share")?.resize(width: 24, height: 24)
+        share.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(shareAction)))
+        share.isUserInteractionEnabled = true
+        let headerLine = UIView()
+        headerLine.frame = CGRect(x: 0, y: 0, width: width(), height: 0.5)
+        headerLine.backgroundColor = .lightGray
+        actionView.addSubview(headerLine)
+        let bottomLine = UIView()
+        bottomLine.frame = CGRect(x: 0, y: actionHeight-0.5, width: width(), height: 0.5)
+        bottomLine.backgroundColor = .lightGray
+        actionView.addSubview(bottomLine)
+    }
+    @objc func favoriteAction(){
+        self.favoriteViewModel.favorite(self.detail).subscribe(onNext: {data in
+            self.favorite.image = UIImage(named: "favorite_selected")?.resize(width: 24, height: 24)
+        }).disposed(by: disposeBag)
+    }
+    
+    @objc func likeAction(){
+        likeViewModel.like(self.detail.dataId).subscribe(onNext: {data in
+            self.like.image = UIImage(named: "like_selected")?.resize(width: 24, height: 24)
+            logE(any: data)
+        }).disposed(by: disposeBag)
+    }
+    @objc func shareAction(){
+        
     }
 }
 extension VideoDetailViewController:BMPlayerDelegate{
@@ -88,6 +154,8 @@ extension VideoDetailViewController:BMPlayerDelegate{
 
 extension VideoDetailViewController:UITableViewDataSource,UITableViewDelegate{
     func initUITableViewDataSource(){
+        self.view.addSubview(tableView)
+        self.tableView.frame = CGRect(x: 0, y: statusHeight+videoViewHeight+actionHeight, width: width(), height: height()-statusHeight-videoViewHeight-actionHeight-bottom())
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none

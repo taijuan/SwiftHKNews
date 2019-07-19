@@ -142,7 +142,7 @@ extension NewsChildViewController:FSPagerViewDataSource,FSPagerViewDelegate{
         return cell
     }
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        push(NewsDetailViewController(data: self.data[index]), animated: true)
+        push(NewsDetailViewController(data: self.pagerData[index]), animated: true)
     }
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         self.pageControl.currentPage = targetIndex

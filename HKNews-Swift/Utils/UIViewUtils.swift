@@ -59,6 +59,37 @@ extension UIViewController {
         titleView.text = title
         self.view.addSubview(titleView)
     }
+    
+    func setBackTitleBar(_ title:String){
+        let headerView = UIView()
+        self.view.addSubview(headerView)
+        headerView.backgroundColor = .white
+        headerView.frame = CGRect(x: 0, y: 0, width: width(), height: statusHeight+toolBarHeight())
+        let backImageView = UIImageView()
+        self.view.addSubview(backImageView)
+        backImageView.frame = CGRect(x: 0, y: statusHeight, width: toolBarHeight(), height: toolBarHeight())
+        backImageView.contentMode = .center
+        backImageView.image = UIImage(named: "back")?.resize(width: 16, height: 28)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
+        backImageView.addGestureRecognizer(tap)
+        backImageView.isUserInteractionEnabled = true
+        
+        let titleView = UILabel()
+        self.view.addSubview(titleView)
+        titleView.frame = CGRect(x: toolBarHeight(), y: statusHeight, width: width()-toolBarHeight()-toolBarHeight(), height: toolBarHeight())
+        titleView.text = title
+        titleView.textColor = .black
+        titleView.font = UIFont.systemFont(ofSize: 21)
+        titleView.textAlignment = .center
+        
+        let bottomLine = UIView()
+        bottomLine.frame = CGRect(x: 0, y: statusHeight+toolBarHeight()-0.5, width: width(), height: 0.5)
+        bottomLine.backgroundColor = .lightGray
+        headerView.addSubview(bottomLine)
+    }
+    @objc func back(){
+        pop(animated: true)
+    }
 }
 extension UIView {
     //设置UIVIew，UIImageView等的边框，圆角，阴影
@@ -100,6 +131,7 @@ extension UITabBarItem{
             UIImage(named: "\(name)")?.resize()?.withRenderingMode(.alwaysOriginal)
         self.selectedImage =
             UIImage(named: "\(name)_selected")?.resize()?.withRenderingMode(.alwaysOriginal)
+        self.title = name
     }
 }
 

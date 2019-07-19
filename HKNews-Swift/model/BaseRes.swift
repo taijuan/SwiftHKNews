@@ -12,5 +12,4 @@ class BaseRes<T:HandyJSON>:HandyJSON{
     var resMsg:String? = nil
     var resObject:T? = nil
     required init() {}
-    
 }

@@ -50,11 +50,6 @@ class NewsViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        if isNews {
-            self.tabBarItem.setTabItem(name: "news")
-        }else{
-            self.tabBarItem.setTabItem(name: "focus")
-        }
         var y = statusHeight+toolBarHeight()
         pageViewManager.titleView.frame = CGRect(x: 8, y: y, width: width()-16, height: pageTabBarHeight())
         self.view.addSubview(pageViewManager.titleView)

@@ -18,9 +18,6 @@ class VideoViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        //设置主页tab
-        self.tabBarItem.setTabItem(name:"video")
-        
         //设置UITableView代理
         let table = UITableView()
         table.frame =
