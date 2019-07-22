@@ -13,7 +13,7 @@ import JavaScriptCore
 class EPaperDetailViewController: UIViewController {
     private let data:EPaper
     private let webView = WKWebView()
-    
+    private lazy var loadingView  = LoadingView(view: self.view)
     init(data:EPaper){
         self.data = data
         super.init(nibName: nil, bundle: nil)
@@ -25,24 +25,19 @@ class EPaperDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
-        self.view.addSubview(webView)
-        webView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
-        webView.load(URLRequest.init(url: URL(string: self.data.htmlUrl)!))
-        initWKUIDelegate()
         initWKNavigationDelegate()
         self.setBackTitleBar("EPaper")
     }
 }
-extension EPaperDetailViewController:WKUIDelegate{
-    func initWKUIDelegate(){
-        self.webView.uiDelegate = self
-    }
-}
+
 
 extension EPaperDetailViewController:WKNavigationDelegate{
     func initWKNavigationDelegate(){
+        self.view.addSubview(self.webView)
+        self.webView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
+        self.webView.load(URLRequest.init(url: URL(string: self.data.htmlUrl)!))
         self.webView.navigationDelegate = self
+        self.loadingView.showLoading()
     }
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url?.absoluteString ?? ""
@@ -52,5 +47,8 @@ extension EPaperDetailViewController:WKNavigationDelegate{
         }else{
             decisionHandler(.allow)
         }
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.loadingView.hideLoading()
     }
 }

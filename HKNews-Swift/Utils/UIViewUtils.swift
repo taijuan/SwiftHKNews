@@ -25,17 +25,15 @@ extension UITableView {
     func registerHeader(action:@escaping ()->Void){
         self.mj_header = MJRefreshNormalHeader()
         self.mj_header.isAutomaticallyChangeAlpha = true
-        logE(any: self.mj_header.ignoredScrollViewContentInsetTop)
         self.mj_header.refreshingBlock = {
             action()
         }
-        self.mj_header.beginRefreshing()
+//        self.mj_header.beginRefreshing()
     }
     
     //加载更多UI
     func registerFooter(action:@escaping ()->Void){
         self.mj_footer = MJRefreshAutoNormalFooter()
-        self.mj_footer.ignoredScrollViewContentInsetBottom = bottom()
         self.mj_footer.refreshingBlock = {
             action()
         }

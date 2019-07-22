@@ -12,8 +12,5 @@ extension UIView{
     func showToast(_ msg:String){
         self.makeToast(msg)
     }
-    
-    func showLoadingToast(){
-        
-    }
+
 }

@@ -20,7 +20,12 @@ class VideosViewModel {
     init() {
         refresh = refreshBV.asObserver().filter({a in return !a.isEmpty })
         loadMore = loadMoreBV.asObserver().filter({a in return !a.isEmpty })
-        state = stateBV.asObserver()
+        state = stateBV.asObserver().filter{a in
+            switch(a){
+            case .Init: return false
+            default: return true
+            }
+        }
     }
     
     func refreshData(){

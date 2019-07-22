@@ -14,6 +14,7 @@ class WebViewController: UIViewController {
     private let data:String
     private let name:String
     private let webView = WKWebView()
+    private lazy var loadingView = LoadingView(view: self.view)
     init(title:String,data:String){
         self.name = title
         self.data = data
@@ -26,10 +27,21 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
-        self.view.addSubview(webView)
-        webView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
-        webView.load(URLRequest(url: URL(string: data)!))
+        self.initWKNavigationDelegate()
         self.setBackTitleBar(name)
+    }
+}
+
+extension WebViewController:WKNavigationDelegate{
+    func initWKNavigationDelegate(){
+        self.webView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
+        self.webView.load(URLRequest(url: URL(string: data)!))
+        self.webView.navigationDelegate = self
+        self.view.addSubview(self.webView)
+        self.loadingView.showLoading()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.loadingView.hideLoading()
     }
 }

@@ -34,6 +34,7 @@
 		64204A9622D7353B00DEA9CF /* EPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64204A9522D7353B00DEA9CF /* EPaper.swift */; };
 		64204A9822D7378200DEA9CF /* EPaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64204A9722D7378200DEA9CF /* EPaperViewModel.swift */; };
 		64204A9B22D8283600DEA9CF /* EPaperFSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64204A9922D8283600DEA9CF /* EPaperFSPagerViewCell.swift */; };
+		644EB24322E5641A0080D665 /* LoadingViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644EB24222E5641A0080D665 /* LoadingViewUtils.swift */; };
 		64A3E4B222DC25F3005B190C /* EPaperDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3E4B122DC25F3005B190C /* EPaperDetailViewController.swift */; };
 		64A3E4B522DC5C7C005B190C /* MeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3E4B322DC5C7C005B190C /* MeTableViewCell.swift */; };
 		64A3E4B622DC5C7C005B190C /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3E4B422DC5C7C005B190C /* MeTableViewCell.xib */; };
@@ -87,6 +88,7 @@
 		64204A9522D7353B00DEA9CF /* EPaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaper.swift; sourceTree = "<group>"; };
 		64204A9722D7378200DEA9CF /* EPaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperViewModel.swift; sourceTree = "<group>"; };
 		64204A9922D8283600DEA9CF /* EPaperFSPagerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperFSPagerViewCell.swift; sourceTree = "<group>"; };
+		644EB24222E5641A0080D665 /* LoadingViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingViewUtils.swift; path = ../model/LoadingViewUtils.swift; sourceTree = "<group>"; };
 		64A3E4B122DC25F3005B190C /* EPaperDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperDetailViewController.swift; sourceTree = "<group>"; };
 		64A3E4B322DC5C7C005B190C /* MeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewCell.swift; sourceTree = "<group>"; };
 		64A3E4B422DC5C7C005B190C /* MeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeTableViewCell.xib; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		640FDBE822CDF34E00E507B6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				644EB24222E5641A0080D665 /* LoadingViewUtils.swift */,
 				640FDBEB22CDF4D100E507B6 /* ImageUtils.swift */,
 				640FDC0722CF37EE00E507B6 /* WinUtils.swift */,
 				64204A7122D3271C00DEA9CF /* LogUtils.swift */,
@@ -417,6 +420,7 @@
 				64A3E4CF22E0543A005B190C /* Favorite.swift in Sources */,
 				64204A9622D7353B00DEA9CF /* EPaper.swift in Sources */,
 				64204A6E22D2F9ED00DEA9CF /* DataList.swift in Sources */,
+				644EB24322E5641A0080D665 /* LoadingViewUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

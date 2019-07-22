@@ -15,6 +15,7 @@ class PaperViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let pagerView = FSPagerView()
     private let h = width()*729/1080
+    private lazy var loadingView:LoadingView = LoadingView(view: self.view)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -32,15 +33,15 @@ class PaperViewController: UIViewController {
         epaper_title.image = UIImage(named: "epaper_title")
         initUI()
         let epaperViewModel = EPaperViewModel()
-        epaperViewModel.loadData().subscribe(onNext: { data in
+        epaperViewModel.loadData().subscribe(onNext: {data in
             self.data.removeAll()
             self.data += data
             logE(any: self.data)
             self.reloadData()
-        }).disposed(by: disposeBag)
-        
+        }, onError: nil, onCompleted: {
+            self.loadingView.hideLoading()
+        }, onDisposed: nil).disposed(by: disposeBag)
     }
-    
 }
 
 extension PaperViewController:FSPagerViewDataSource,FSPagerViewDelegate{
@@ -53,6 +54,8 @@ extension PaperViewController:FSPagerViewDataSource,FSPagerViewDelegate{
         pagerView.interitemSpacing = 36
         pagerView.itemSize = CGSize(width: width()*2/3, height: height()-h+48-tabBarHeight()-bottom())
         pagerView.isInfinite = false
+        self.loadingView = LoadingView(view: self.pagerView)
+        self.loadingView.showLoading()
     }
     
     func reloadData(){
@@ -68,7 +71,6 @@ extension PaperViewController:FSPagerViewDataSource,FSPagerViewDelegate{
         return cell
     }
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        logE(any: "xxxxx")
         push(EPaperDetailViewController(data: data[index]), animated: true)
     }
 }

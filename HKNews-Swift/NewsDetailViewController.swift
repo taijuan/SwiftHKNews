@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import RxSwift
 
-class NewsDetailViewController: UIViewController {
+class NewsDetailViewController: UIViewController,WKNavigationDelegate {
     
     private let data:NewsItem
     private let disposeBag = DisposeBag()
@@ -18,6 +18,7 @@ class NewsDetailViewController: UIViewController {
     private let favoriteViewModel = FavoriteViewModel()
     private let favorite = UIImageView()
     private let like = UIImageView()
+    private lazy var loadingVIew = LoadingView(view: self.view)
     
     init(data:NewsItem){
         self.data = data
@@ -34,9 +35,14 @@ class NewsDetailViewController: UIViewController {
         self.view.addSubview(webView)
         webView.frame = CGRect(x: 0, y: statusHeight, width: width(), height: height()-statusHeight-tabBarHeight()-bottom())
         webView.load(URLRequest.init(url: URL(string: "\(ImageDNS)\(self.data.murl)")!))
+        webView.navigationDelegate = self
+        loadingVIew.showLoading()
         initBottomView()
     }
     
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingVIew.hideLoading()
+    }
     func initBottomView(){
         let bottomView = UIView()
         self.view.addSubview(bottomView)

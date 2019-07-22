@@ -56,7 +56,6 @@ class NewsViewController: UIViewController {
         y += pageTabBarHeight()
         let h = height()-y-tabBarHeight()-bottom()
         pageViewManager.contentView.frame = CGRect(x: 0,y: y,width: width(),height: h)
-        logE(any: pageViewManager.contentView.frame)
         self.view.addSubview(pageViewManager.contentView)
         if isNews {
             self.setHeaderTitleBar(title: "News")

@@ -14,6 +14,7 @@ class VideoViewController: UIViewController{
     private let disposeBag = DisposeBag()
     private var data : Array<NewsItem> = []
     private let videosViewModel = VideosViewModel()
+    private lazy var loadingView = LoadingView(view: self.view)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class VideoViewController: UIViewController{
         //设置UITableView代理
         let table = UITableView()
         table.frame =
-            CGRect(x: 0, y: statusHeight+toolBarHeight()-refreshHeight(), width: width(), height: height()-statusHeight-toolBarHeight()+refreshHeight()-tabBarHeight()-bottom())
+            CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()+refreshHeight()-bottom())
         table.dataSource = self
         table.delegate = self
         table.registerXib(xib: "VideoTableViewCell")
@@ -37,8 +38,8 @@ class VideoViewController: UIViewController{
         }
         
         //设置标题栏
-       self.setHeaderTitleBar()
-        
+        self.setHeaderTitleBar()
+        self.loadingView.showLoading()
         //刷新数据监听
         videosViewModel.refresh.subscribe(onNext: {a in
             self.data.removeAll()
@@ -47,7 +48,7 @@ class VideoViewController: UIViewController{
             table.reloadData()
         }).disposed(by: disposeBag)
         
-         //加载更多数据监听
+        //加载更多数据监听
         videosViewModel.loadMore.subscribe(onNext: {a in
             self.data += a
             logE(any: self.data)
@@ -58,9 +59,10 @@ class VideoViewController: UIViewController{
         videosViewModel.state.subscribe(onNext: {a in
             table.mj_header.endRefreshing()
             table.mj_footer.endRefreshing()
+            self.loadingView.hideLoading()
         }).disposed(by: disposeBag)
         
-        
+        videosViewModel.refreshData()
     }
 }
 

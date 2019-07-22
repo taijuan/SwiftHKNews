@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        Observable.of("1")
+        Observable.just(1)
             .delaySubscription(DispatchTimeInterval.seconds(3), scheduler: MainScheduler.instance)
             .subscribe(onNext: {_ in
                 popAndPush(HomeViewController(),animated:false)

@@ -82,7 +82,6 @@ extension FeedbackViewController:UITextViewDelegate{
             self.view.showToast("email is empty")
             return
         }
-        
         FeedbackViewModel().feedback(content: content, email: email).subscribe(onNext: {data in
             logE(any: data)
             self.view.showToast("Success")

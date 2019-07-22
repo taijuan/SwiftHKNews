@@ -19,6 +19,8 @@ class NewsChildViewController: UIViewController {
     private lazy var pageView = FSPagerView()
     private lazy var pageControl = FSPageControl()
     private lazy var table = UITableView()
+    private lazy var loadingView = LoadingView(view: self.view)
+    private lazy var newsViewModel:NewsViewModel = NewsViewModel(code: self.code)
     init(code:String){
         super.init(nibName: nil, bundle: nil)
         self.code = code
@@ -31,9 +33,13 @@ class NewsChildViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //添加UITableView
+        self.view.frame = CGRect(x: 0, y: 0, width: width(), height: height()-statusHeight-toolBarHeight()-pageTabBarHeight()-tabBarHeight()-bottom())
+        table.frame = self.view.bounds
+        logE(any: "####################################")
         logE(any: self.view.bounds)
-        table.frame = CGRect(x: 0, y: -refreshHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-pageTabBarHeight()-tabBarHeight()-bottom()+refreshHeight())
-        
+        logE(any: self.table.frame)
+        logE(any: self.table.center)
+        logE(any: "####################################")
         table.dataSource = self
         table.delegate = self
         table.registerXib(xib: "NewsTableViewCell")
@@ -41,17 +47,17 @@ class NewsChildViewController: UIViewController {
         table.separatorStyle = .none
         initHeaderPager()
         
-        let newsViewModel = NewsViewModel(code: self.code)
         table.registerHeader {
-            newsViewModel.refreshData()
+            self.newsViewModel.refreshData()
             logE(any: "refreshData")
         }
         if self.code != "home"{
             table.registerFooter {
-                newsViewModel.loadMoreData()
+                self.newsViewModel.loadMoreData()
                 logE(any: "loadMoreData")
             }
         }
+        self.loadingView.showLoading()
         newsViewModel.pager.subscribe(onNext: {data in
             self.pagerData.removeAll()
             self.pagerData += data
@@ -74,7 +80,9 @@ class NewsChildViewController: UIViewController {
             if self.code != "home"{
                 self.table.mj_footer.endRefreshing()
             }
+            self.loadingView.hideLoading()
         }).disposed(by: disposeBag)
+        newsViewModel.refreshData()
     }
 }
 
@@ -117,7 +125,7 @@ extension NewsChildViewController:FSPagerViewDataSource,FSPagerViewDelegate{
         self.pageView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "FSPagerViewCell")
         self.pageView.dataSource = self
         self.pageView.delegate = self
-    
+        
         self.pageControl.frame = CGRect(x: 0, y: h-16, width: width()-16, height: 8)
         self.pageControl.contentHorizontalAlignment = .right
         self.pageControl.setFillColor(.lightGray, for: .normal)

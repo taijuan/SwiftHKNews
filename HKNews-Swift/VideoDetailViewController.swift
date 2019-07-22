@@ -109,7 +109,6 @@ class VideoDetailViewController: UIViewController {
 extension VideoDetailViewController:BMPlayerDelegate{
     
     func initVideoPlayer(){
-        logE(any: "top --> \(statusHeight)")
         self.player.frame = CGRect(x: 0, y: statusHeight, width: width(), height: videoViewHeight)
         self.player.delegate = self
         self.view.addSubview(self.player)
