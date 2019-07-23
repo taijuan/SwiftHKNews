@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5CAF66A5336C3D179987C7 /* Pods_SwiftHKNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84A5BCD1404F83FD5838219 /* Pods_SwiftHKNews.framework */; };
 		640FDBE622CDDFA400E507B6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640FDBE422CDDFA400E507B6 /* WelcomeViewController.swift */; };
 		640FDBE722CDDFA400E507B6 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640FDBE522CDDFA400E507B6 /* WelcomeViewController.xib */; };
 		640FDBEC22CDF4D100E507B6 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640FDBEB22CDF4D100E507B6 /* ImageUtils.swift */; };
@@ -112,6 +113,9 @@
 		64C40AF422CB0E3A008F7F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64C40AF722CB0E3A008F7F9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64C40AF922CB0E3A008F7F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73835B5927BB51EB90C72626 /* Pods-SwiftHKNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHKNews.release.xcconfig"; path = "Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews.release.xcconfig"; sourceTree = "<group>"; };
+		7CAA5CD90365503DF9444D1C /* Pods-SwiftHKNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHKNews.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews.debug.xcconfig"; sourceTree = "<group>"; };
+		C84A5BCD1404F83FD5838219 /* Pods_SwiftHKNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHKNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF525A56C7E2A7FB4A9BC526 /* Pods_HKNews_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HKNews_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -120,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5CAF66A5336C3D179987C7 /* Pods_SwiftHKNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				CF525A56C7E2A7FB4A9BC526 /* Pods_HKNews_Swift.framework */,
+				C84A5BCD1404F83FD5838219 /* Pods_SwiftHKNews.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,6 +260,8 @@
 			children = (
 				5632E28C2258BC61E089FDDC /* Pods-HKNews-Swift.debug.xcconfig */,
 				43CE4584DDB199E7A0CA4576 /* Pods-HKNews-Swift.release.xcconfig */,
+				7CAA5CD90365503DF9444D1C /* Pods-SwiftHKNews.debug.xcconfig */,
+				73835B5927BB51EB90C72626 /* Pods-SwiftHKNews.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -338,15 +346,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HKNews-Swift/Pods-HKNews-Swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HKNews-Swift/Pods-HKNews-Swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HKNews-Swift/Pods-HKNews-Swift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F23693974601E2D822E87AFE /* [CP] Check Pods Manifest.lock */ = {
@@ -364,7 +372,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HKNews-Swift-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SwiftHKNews-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -562,7 +570,7 @@
 		};
 		64C40AFD22CB0E3A008F7F9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5632E28C2258BC61E089FDDC /* Pods-HKNews-Swift.debug.xcconfig */;
+			baseConfigurationReference = 7CAA5CD90365503DF9444D1C /* Pods-SwiftHKNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -581,7 +589,7 @@
 		};
 		64C40AFE22CB0E3A008F7F9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43CE4584DDB199E7A0CA4576 /* Pods-HKNews-Swift.release.xcconfig */;
+			baseConfigurationReference = 73835B5927BB51EB90C72626 /* Pods-SwiftHKNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

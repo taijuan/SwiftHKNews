@@ -24,6 +24,8 @@ class HomeViewController: UITabBarController {
         let me = MineViewController()
         me.tabBarItem.setTabItem(name: "me")
         self.viewControllers = [news,focus,epaper,video,me]
+        self.tabBar.frame = CGRect(x: 0, y: height()-statusHeight, width: width(), height: tabBarHeight()+bottom())
+        self.tabBar.backgroundColor = .white
         logE(any: self.view.bounds)
     }
 }

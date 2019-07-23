@@ -22,7 +22,7 @@ class VideoViewController: UIViewController{
         //设置UITableView代理
         let table = UITableView()
         table.frame =
-            CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()+refreshHeight()-bottom())
+            CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-tabBarHeight()-bottom())
         table.dataSource = self
         table.delegate = self
         table.registerXib(xib: "VideoTableViewCell")
