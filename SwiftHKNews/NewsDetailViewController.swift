@@ -31,9 +31,8 @@ class NewsDetailViewController: UIViewController,WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        let webView = WKWebView()
+        let webView = WKWebView(x: 0, y: statusHeight, width: width(), height: height()-statusHeight-tabBarHeight()-bottom())
         self.view.addSubview(webView)
-        webView.frame = CGRect(x: 0, y: statusHeight, width: width(), height: height()-statusHeight-tabBarHeight()-bottom())
         webView.load(URLRequest.init(url: URL(string: "\(ImageDNS)\(self.data.murl)")!))
         webView.navigationDelegate = self
         loadingVIew.showLoading()

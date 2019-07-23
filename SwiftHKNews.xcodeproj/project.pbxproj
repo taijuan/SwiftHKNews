@@ -36,6 +36,7 @@
 		64204A9822D7378200DEA9CF /* EPaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64204A9722D7378200DEA9CF /* EPaperViewModel.swift */; };
 		64204A9B22D8283600DEA9CF /* EPaperFSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64204A9922D8283600DEA9CF /* EPaperFSPagerViewCell.swift */; };
 		644EB24322E5641A0080D665 /* LoadingViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644EB24222E5641A0080D665 /* LoadingViewUtils.swift */; };
+		649C53EB22E6FDA600F69812 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649C53EA22E6FDA600F69812 /* LaunchScreen.storyboard */; };
 		64A3E4B222DC25F3005B190C /* EPaperDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3E4B122DC25F3005B190C /* EPaperDetailViewController.swift */; };
 		64A3E4B522DC5C7C005B190C /* MeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3E4B322DC5C7C005B190C /* MeTableViewCell.swift */; };
 		64A3E4B622DC5C7C005B190C /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3E4B422DC5C7C005B190C /* MeTableViewCell.xib */; };
@@ -56,7 +57,6 @@
 		64C40AEE22CB0E2F008F7F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C40AED22CB0E2F008F7F9A /* AppDelegate.swift */; };
 		64C40AF322CB0E2F008F7F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C40AF122CB0E2F008F7F9A /* Main.storyboard */; };
 		64C40AF522CB0E3A008F7F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C40AF422CB0E3A008F7F9A /* Assets.xcassets */; };
-		64C40AF822CB0E3A008F7F9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C40AF622CB0E3A008F7F9A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +90,7 @@
 		64204A9722D7378200DEA9CF /* EPaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperViewModel.swift; sourceTree = "<group>"; };
 		64204A9922D8283600DEA9CF /* EPaperFSPagerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperFSPagerViewCell.swift; sourceTree = "<group>"; };
 		644EB24222E5641A0080D665 /* LoadingViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingViewUtils.swift; path = ../model/LoadingViewUtils.swift; sourceTree = "<group>"; };
+		649C53EA22E6FDA600F69812 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64A3E4B122DC25F3005B190C /* EPaperDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperDetailViewController.swift; sourceTree = "<group>"; };
 		64A3E4B322DC5C7C005B190C /* MeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewCell.swift; sourceTree = "<group>"; };
 		64A3E4B422DC5C7C005B190C /* MeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeTableViewCell.xib; sourceTree = "<group>"; };
@@ -111,7 +112,6 @@
 		64C40AED22CB0E2F008F7F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64C40AF222CB0E2F008F7F9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64C40AF422CB0E3A008F7F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		64C40AF722CB0E3A008F7F9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64C40AF922CB0E3A008F7F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73835B5927BB51EB90C72626 /* Pods-SwiftHKNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHKNews.release.xcconfig"; path = "Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews.release.xcconfig"; sourceTree = "<group>"; };
 		7CAA5CD90365503DF9444D1C /* Pods-SwiftHKNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHKNews.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHKNews/Pods-SwiftHKNews.debug.xcconfig"; sourceTree = "<group>"; };
@@ -235,7 +235,6 @@
 				64C40AED22CB0E2F008F7F9A /* AppDelegate.swift */,
 				64C40AF122CB0E2F008F7F9A /* Main.storyboard */,
 				64C40AF422CB0E3A008F7F9A /* Assets.xcassets */,
-				64C40AF622CB0E3A008F7F9A /* LaunchScreen.storyboard */,
 				64C40AF922CB0E3A008F7F9A /* Info.plist */,
 				640FDBE422CDDFA400E507B6 /* WelcomeViewController.swift */,
 				640FDBE522CDDFA400E507B6 /* WelcomeViewController.xib */,
@@ -251,6 +250,7 @@
 				64A3E4BB22DD8834005B190C /* VideoDetailViewController.swift */,
 				64A3E4D022E06424005B190C /* FavoritesViewController.swift */,
 				64A3E4D222E187A6005B190C /* FeedbackViewController.swift */,
+				649C53EA22E6FDA600F69812 /* LaunchScreen.storyboard */,
 			);
 			path = SwiftHKNews;
 			sourceTree = "<group>";
@@ -327,7 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64A3E4C722DDCB72005B190C /* VideoHeaderTableViewCell.xib in Resources */,
-				64C40AF822CB0E3A008F7F9A /* LaunchScreen.storyboard in Resources */,
+				649C53EB22E6FDA600F69812 /* LaunchScreen.storyboard in Resources */,
 				640FDBE722CDDFA400E507B6 /* WelcomeViewController.xib in Resources */,
 				64C40AF522CB0E3A008F7F9A /* Assets.xcassets in Resources */,
 				64C40AF322CB0E2F008F7F9A /* Main.storyboard in Resources */,
@@ -439,14 +439,6 @@
 				64C40AF222CB0E2F008F7F9A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		64C40AF622CB0E3A008F7F9A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64C40AF722CB0E3A008F7F9A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

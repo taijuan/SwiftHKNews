@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MJRefresh
 import RxSwift
+import WebKit
 
 extension UITableView {
     func registerXib(xib:String){
@@ -150,5 +151,14 @@ extension UIColor {
         let green = CGFloat(g) / 255.0
         let blue  = CGFloat(b) / 255.0
         self.init(red: red, green: green, blue: blue, alpha: 1)
+    }
+}
+
+extension WKWebView {
+    convenience init(x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat) {
+        let config = WKWebViewConfiguration()
+        config.preferences.minimumFontSize = 8
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        self.init(frame: frame, configuration: config)
     }
 }

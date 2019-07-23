@@ -12,7 +12,7 @@ import JavaScriptCore
 
 class EPaperDetailViewController: UIViewController {
     private let data:EPaper
-    private let webView = WKWebView()
+    private let webView = WKWebView(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
     private lazy var loadingView  = LoadingView(view: self.view)
     init(data:EPaper){
         self.data = data
@@ -34,7 +34,6 @@ class EPaperDetailViewController: UIViewController {
 extension EPaperDetailViewController:WKNavigationDelegate{
     func initWKNavigationDelegate(){
         self.view.addSubview(self.webView)
-        self.webView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
         self.webView.load(URLRequest.init(url: URL(string: self.data.htmlUrl)!))
         self.webView.navigationDelegate = self
         self.loadingView.showLoading()

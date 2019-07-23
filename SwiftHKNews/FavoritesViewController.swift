@@ -27,6 +27,7 @@ extension FavoritesViewController:UITableViewDataSource,UITableViewDelegate{
         self.tableView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight())
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.separatorStyle = .none
         self.tableView.registerXib(xib: "NewsTableViewCell")
         self.tableView.registerXib(xib: "VideoTableViewCell")
         self.favoriteViewModel.getFavorites().subscribe(onNext: {data in

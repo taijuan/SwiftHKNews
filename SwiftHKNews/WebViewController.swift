@@ -13,7 +13,7 @@ class WebViewController: UIViewController {
 
     private let data:String
     private let name:String
-    private let webView = WKWebView()
+    private let webView = WKWebView(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
     private lazy var loadingView = LoadingView(view: self.view)
     init(title:String,data:String){
         self.name = title
@@ -34,7 +34,6 @@ class WebViewController: UIViewController {
 
 extension WebViewController:WKNavigationDelegate{
     func initWKNavigationDelegate(){
-        self.webView.frame = CGRect(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
         self.webView.load(URLRequest(url: URL(string: data)!))
         self.webView.navigationDelegate = self
         self.view.addSubview(self.webView)
