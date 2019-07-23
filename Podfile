@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.2'
+platform :ios, '10.0'
 
 target 'HKNews-Swift' do
   use_frameworks!
@@ -11,7 +11,6 @@ target 'HKNews-Swift' do
   pod 'MJRefresh'
   pod 'DNSPageView'
   pod 'FSPagerView'
-#  pod 'SnapKit'
   pod 'RealmSwift'
   pod 'BMPlayer'
   pod 'Toast-Swift'
