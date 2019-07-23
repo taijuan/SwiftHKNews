@@ -29,25 +29,22 @@ extension UIImageView {
 }
 
 extension UIImage {
-    func resize(width:CGFloat = 32,height:CGFloat = 32) -> UIImage? {
-        let w = self.size.width
-        let h = self.size.height
-        let dw = w/width
-        let dh = h/height
-        logE(any: "w: \(w), h: \(h)")
-        logE(any: "dw: \(dw), dh: \(dh)")
-        if(dw<=1&&dh<=1){
-            return self
-        }
-        let scale = CGFloat.maximum(dw, dh)
-        let sw = w/scale
-        let sh = h/scale
-        logE(any: "sw: \(sw), sh: \(sh)")
-        UIGraphicsBeginImageContext(CGSize(width: sw, height: sh))
-        draw(in: CGRect(x: 0, y: 0, width: sw, height: sh))
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
+    func resize(width:CGFloat = 28,height:CGFloat = 28) -> UIImage? {
+        //let w = self.size.width
+        //let h = self.size.height
+        //let dw = w/width
+        //let dh = h/height
+        //logE(any: "w: \(w), h: \(h)")
+        //logE(any: "dw: \(dw), dh: \(dh)")
+        //let scale = CGFloat.maximum(dw, dh)
+        //let sw = w/scale
+        //let sh = h/scale
+        //logE(any: "sw: \(sw), sh: \(sh)")
+        //UIGraphicsBeginImageContext(CGSize(width: sw, height: sh))
+        //draw(in: CGRect(x: 0, y: 0, width: sw, height: sh))
+        //let image = UIGraphicsGetImageFromCurrentImageContext()
+        //UIGraphicsEndImageContext()
+        return self
     }
     
 }

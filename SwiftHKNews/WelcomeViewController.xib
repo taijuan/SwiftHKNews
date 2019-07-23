@@ -53,7 +53,7 @@
         </view>
     </objects>
     <resources>
-        <image name="welcome_background" width="1080" height="1920"/>
-        <image name="welcome_logo" width="753" height="184"/>
+        <image name="welcome_background" width="360" height="640"/>
+        <image name="welcome_logo" width="251" height="61.333332061767578"/>
     </resources>
 </document>
