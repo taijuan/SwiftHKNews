@@ -17,7 +17,7 @@ class WelcomeViewController: UIViewController {
         Observable.just(1)
             .delaySubscription(DispatchTimeInterval.seconds(3), scheduler: MainScheduler.instance)
             .subscribe(onNext: {_ in
-                popAndPush(HomeViewController(),animated:false)
+                setRootViewController(HomeViewController())
             }).disposed(by: disposeBag)
     }
 }

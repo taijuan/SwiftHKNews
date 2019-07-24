@@ -57,28 +57,28 @@ class VideoDetailViewController: UIViewController {
         favorite.frame = CGRect(x: 0, y: 0, width: width()/3, height: actionHeight)
         actionView.addSubview(favorite)
         favorite.contentMode = .center
-        favorite.image = UIImage(named: "favorite")?.resize(width: 24, height: 24)
+        favorite.image = UIImage(named: "favorite")
         favorite.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(favoriteAction)))
         favorite.isUserInteractionEnabled = true
         
         like.frame = CGRect(x: width()/3, y: 0, width: width()/3, height: actionHeight)
         actionView.addSubview(like)
         like.contentMode = .center
-        like.image = UIImage(named: "like")?.resize(width: 24, height: 24)
+        like.image = UIImage(named: "like")
         like.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(likeAction)))
         like.isUserInteractionEnabled = true
         self.favoriteViewModel.isFavorite(self.detail).subscribe(onNext: {data in
             if data{
-                self.favorite.image = UIImage(named: "favorite_selected")?.resize(width: 24, height: 24)
+                self.favorite.image = UIImage(named: "favorite_selected")
             }else{
-                self.favorite.image = UIImage(named: "favorite")?.resize(width: 24, height: 24)
+                self.favorite.image = UIImage(named: "favorite")
             }
         }).disposed(by: disposeBag)
         let share = UIImageView()
         share.frame = CGRect(x: width()*2/3, y: 0, width: width()/3, height: actionHeight)
         actionView.addSubview(share)
         share.contentMode = .center
-        share.image = UIImage(named: "share")?.resize(width: 24, height: 24)
+        share.image = UIImage(named: "share")
         share.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(shareAction)))
         share.isUserInteractionEnabled = true
         let headerLine = UIView()
@@ -92,13 +92,13 @@ class VideoDetailViewController: UIViewController {
     }
     @objc func favoriteAction(){
         self.favoriteViewModel.favorite(self.detail).subscribe(onNext: {data in
-            self.favorite.image = UIImage(named: "favorite_selected")?.resize(width: 24, height: 24)
+            self.favorite.image = UIImage(named: "favorite_selected")
         }).disposed(by: disposeBag)
     }
     
     @objc func likeAction(){
         likeViewModel.like(self.detail.dataId).subscribe(onNext: {data in
-            self.like.image = UIImage(named: "like_selected")?.resize(width: 24, height: 24)
+            self.like.image = UIImage(named: "like_selected")
             logE(any: data)
         }).disposed(by: disposeBag)
     }

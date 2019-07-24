@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configRealm()
-        let root = UINavigationController.init(rootViewController: WelcomeViewController())
+        let root = UINavigationController(rootViewController: WelcomeViewController())
         root.navigationBar.isHidden = true
         window?.rootViewController = root
         return true

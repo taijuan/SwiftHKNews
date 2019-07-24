@@ -9,6 +9,10 @@
 import UIKit
 import MJRefresh
 
+//屏幕density 比@2x=2，@3x=3
+let density = UIScreen.main.scale
+
+//状态栏高度
 let statusHeight = UIApplication.shared.statusBarFrame.size.height
 //屏幕宽度
 func width() -> CGFloat {

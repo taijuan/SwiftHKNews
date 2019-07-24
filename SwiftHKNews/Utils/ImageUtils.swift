@@ -29,7 +29,7 @@ extension UIImageView {
 }
 
 extension UIImage {
-    func resize(width:CGFloat = 28,height:CGFloat = 28) -> UIImage? {
+//    func resize(width:CGFloat = 28,height:CGFloat = 28) -> UIImage? {
         //let w = self.size.width
         //let h = self.size.height
         //let dw = w/width
@@ -44,7 +44,7 @@ extension UIImage {
         //draw(in: CGRect(x: 0, y: 0, width: sw, height: sh))
         //let image = UIGraphicsGetImageFromCurrentImageContext()
         //UIGraphicsEndImageContext()
-        return self
-    }
+//        return self
+//    }
     
 }

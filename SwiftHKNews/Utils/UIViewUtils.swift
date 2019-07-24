@@ -68,7 +68,7 @@ extension UIViewController {
         self.view.addSubview(backImageView)
         backImageView.frame = CGRect(x: 0, y: statusHeight, width: toolBarHeight(), height: toolBarHeight())
         backImageView.contentMode = .center
-        backImageView.image = UIImage(named: "back")?.resize(width: 16, height: 28)
+        backImageView.image = UIImage(named: "back")
         let tap = UITapGestureRecognizer(target: self, action: #selector(back))
         backImageView.addGestureRecognizer(tap)
         backImageView.isUserInteractionEnabled = true
@@ -127,9 +127,9 @@ extension UITabBarItem{
     //设置Tab属性
     func setTabItem(name:String){
         self.image =
-            UIImage(named: "\(name)")?.resize()?.withRenderingMode(.alwaysOriginal)
+            UIImage(named: "\(name)")?.withRenderingMode(.alwaysOriginal)
         self.selectedImage =
-            UIImage(named: "\(name)_selected")?.resize()?.withRenderingMode(.alwaysOriginal)
+            UIImage(named: "\(name)_selected")?.withRenderingMode(.alwaysOriginal)
         self.title = name
     }
 }

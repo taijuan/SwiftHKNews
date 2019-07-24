@@ -12,6 +12,12 @@ func currentViewController()->UIViewController?{
     return UIViewController.currentViewController()
 }
 
+func setRootViewController(_ viewController:UIViewController){
+    let rootViewController = UINavigationController(rootViewController: viewController)
+    rootViewController.navigationBar.isHidden = true
+    let appDelegate:AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+    appDelegate?.window?.rootViewController = rootViewController
+}
 func pop(animated: Bool){
     currentViewController()?.navigationController?.popViewController(animated: animated)
 }

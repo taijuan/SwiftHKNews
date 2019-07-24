@@ -26,10 +26,11 @@ class EPaperFSPagerViewCell: FSPagerViewCell {
         let url = URL(string: data.imageUrl)
         let w = contentView.bounds.width
         logE(any:"width:\(w) , height:\(h)")
-        let processor = ResizingImageProcessor(referenceSize: CGSize(width: w, height: h), mode: .aspectFit)
+        let processor = ResizingImageProcessor(referenceSize: CGSize(width: w*density, height: h*density), mode: .aspectFit)
+        self.imageView?.contentMode = .scaleAspectFit
         self.imageView?.kf.setImage(
             with: url,
-            placeholder:UIImage(named: "epaper_loading")?.resize(width:w,height:h),
+            placeholder:UIImage(named: "epaper_loading"),
             options: [
                 .processor(processor),
                 .transition(.fade(1))
@@ -39,7 +40,7 @@ class EPaperFSPagerViewCell: FSPagerViewCell {
             switch result{
             case .success(let value):
                 logE(any: value.image.size)
-                self.makeConstraints(height: value.image.size.height)
+                self.makeConstraints(height: value.image.size.height/density)
             case .failure(let error):
                 logE(any:"loading epaper image error :\(error)")
                 self.setLoading()
@@ -58,8 +59,8 @@ class EPaperFSPagerViewCell: FSPagerViewCell {
     private func setLoading(){
         //默认图高度
         let h = w*752/614
-        self.imageView?.image = UIImage(named: "epaper_loading")?.resize(width:w,height:h)
         makeConstraints(height: h)
+        self.imageView?.image = UIImage(named: "epaper_loading")
     }
     private func makeConstraints (height:CGFloat){
         let frame = self.contentView.bounds

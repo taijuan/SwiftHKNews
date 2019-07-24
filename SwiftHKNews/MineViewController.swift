@@ -40,9 +40,9 @@ extension MineViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.row]
         let cell:MeTableViewCell = tableView.getCell(xib: "MeTableViewCell", indexPath: indexPath)
-        cell.leftIcon.image = UIImage(named: item.icon)?.resize()
+        cell.leftIcon.image = UIImage(named: item.icon)
         cell.name.text = item.name
-        cell.rightIcon.image = UIImage(named: "me_next")?.resize(width: 16, height: 16)
+        cell.rightIcon.image = UIImage(named: "me_next")
         return cell
     }
 }
