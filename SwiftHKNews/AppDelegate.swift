@@ -22,7 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configRealm()
         return true
     }
-    
+    //scheme跳转入口
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        logE(any: url)
+        return true
+    }
     private func initWindowAndRootViewController(){
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
