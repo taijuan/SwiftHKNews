@@ -197,7 +197,7 @@ extension VideoDetailViewController:UITableViewDataSource,UITableViewDelegate{
         let index = indexPath.row
         if index != 0{
             let item = self.data[index-1]
-            popAndPush(VideoDetailViewController(data: item), animated: true)
+            push(VideoDetailViewController(data: item), animated: true)
         }
     }
 }

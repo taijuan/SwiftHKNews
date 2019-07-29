@@ -7,24 +7,30 @@
 //
 
 import UIKit
-import RxSwift
+import ESTabBarController_swift
 
-class HomeViewController: UITabBarController {
-    private let disposeBag = DisposeBag()
+class HomeViewController: ESTabBarController {
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         let news = NewsViewController(isNews: true)
-        news.tabBarItem.setTabItem(name: "news")
+        news.tabBarItem = createTabItem(name: "news")
         let focus = NewsViewController(isNews: false)
-        focus.tabBarItem.setTabItem(name: "focus")
+        focus.tabBarItem = createTabItem(name: "focus")
         let epaper = PaperViewController()
-        epaper.tabBarItem.setTabItem(name: "epaper")
+        epaper.tabBarItem = createTabItem(name: "epaper")
         let video = VideoViewController()
-        video.tabBarItem.setTabItem(name: "video")
+        video.tabBarItem = createTabItem(name: "video")
         let me = MineViewController()
-        me.tabBarItem.setTabItem(name: "me")
+        me.tabBarItem = createTabItem(name: "me")
         self.viewControllers = [news,focus,epaper,video,me]
         self.tabBar.frame = CGRect(x: 0, y: height()-statusHeight, width: width(), height: tabBarHeight()+bottom())
         self.tabBar.backgroundColor = .white
     }
+    
+    func createTabItem(name:String)->ESTabBarItem{
+        let tabItem = ESTabBarItem(SpringBouncesContentView(),title: name, image: UIImage(named: "\(name)")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "\(name)_selected")?.withRenderingMode(.alwaysOriginal))
+        return tabItem
+    }
 }
+

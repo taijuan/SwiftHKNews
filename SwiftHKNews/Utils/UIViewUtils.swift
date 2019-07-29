@@ -123,16 +123,7 @@ extension UIView {
         self.layer.addSublayer(gradientLayer)
     }
 }
-extension UITabBarItem{
-    //设置Tab属性
-    func setTabItem(name:String){
-        self.image =
-            UIImage(named: "\(name)")?.withRenderingMode(.alwaysOriginal)
-        self.selectedImage =
-            UIImage(named: "\(name)_selected")?.withRenderingMode(.alwaysOriginal)
-        self.title = name
-    }
-}
+
 
 extension UIColor {
     convenience init(hex: String) {

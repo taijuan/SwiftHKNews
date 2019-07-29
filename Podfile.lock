@@ -10,18 +10,20 @@ PODS:
     - NVActivityIndicatorView (~> 4.7.0)
     - SnapKit (~> 5.0.0)
   - DNSPageView (1.1.6)
+  - ESTabBarController-swift (2.7)
   - FSPagerView (0.8.2)
   - HandyJSON (5.0.0)
+  - IQKeyboardManagerSwift (6.4.0)
   - Kingfisher (5.7.0)
   - MJRefresh (3.2.0)
   - NVActivityIndicatorView (4.7.0):
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
-  - Realm (3.17.1):
-    - Realm/Headers (= 3.17.1)
-  - Realm/Headers (3.17.1)
-  - RealmSwift (3.17.1):
-    - Realm (= 3.17.1)
+  - Realm (3.17.3):
+    - Realm/Headers (= 3.17.3)
+  - Realm/Headers (3.17.3)
+  - RealmSwift (3.17.3):
+    - Realm (= 3.17.3)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -35,8 +37,10 @@ DEPENDENCIES:
   - Alamofire-Synchronous
   - BMPlayer
   - DNSPageView
+  - ESTabBarController-swift
   - FSPagerView
   - HandyJSON
+  - IQKeyboardManagerSwift
   - Kingfisher
   - MJRefresh
   - RealmSwift
@@ -50,8 +54,10 @@ SPEC REPOS:
     - Alamofire-Synchronous
     - BMPlayer
     - DNSPageView
+    - ESTabBarController-swift
     - FSPagerView
     - HandyJSON
+    - IQKeyboardManagerSwift
     - Kingfisher
     - MJRefresh
     - NVActivityIndicatorView
@@ -68,19 +74,21 @@ SPEC CHECKSUMS:
   Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
   BMPlayer: 92a1c2a721694ba6ab107661e7aff670909671c6
   DNSPageView: df84b178394ddf4a73b2d19baf4deb24b4a4ba33
+  ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
-  Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
-  RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
+  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
+  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 1d148272a1350e1485a66e3b040856b130763e46
+PODFILE CHECKSUM: 8473f5dfbf194d77bb4e692ec6c9d9ecf7a2f3a3
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.7.5

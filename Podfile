@@ -14,4 +14,7 @@ target 'SwiftHKNews' do
   pod 'RealmSwift'
   pod 'BMPlayer'
   pod 'Toast-Swift'
+  pod 'ESTabBarController-swift'
+  pod 'IQKeyboardManagerSwift'
+  
 end

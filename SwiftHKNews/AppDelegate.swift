@@ -8,20 +8,35 @@
 
 import UIKit
 import RealmSwift
+import IQKeyboardManagerSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        initWindowAndRootViewController()
+        initKayBoard()
         configRealm()
+        return true
+    }
+    
+    private func initWindowAndRootViewController(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.backgroundColor = .white
+        self.window?.makeKeyAndVisible()
         let root = UINavigationController(rootViewController: WelcomeViewController())
         root.navigationBar.isHidden = true
         window?.rootViewController = root
-        return true
     }
-
+    private func initKayBoard(){
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+    }
     private func configRealm() {
         let dbVersion : UInt64 = 1
         let docPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as String

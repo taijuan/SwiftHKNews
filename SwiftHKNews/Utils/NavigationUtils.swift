@@ -25,10 +25,10 @@ func pop(animated: Bool){
 func popRootController(){
     currentViewController()?.navigationController?.popToRootViewController(animated: true)
 }
-func popAndPush(_ viewController:UIViewController,animated:Bool){
-    currentViewController()?.navigationController?.popViewController(animated: true)
-    currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)
-}
+//func popAndPush(_ viewController:UIViewController,animated:Bool){
+//    currentViewController()?.navigationController?.popViewController(animated: true)
+//    currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)
+//}
 
 func push(_ viewController:UIViewController,animated:Bool){
     currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)

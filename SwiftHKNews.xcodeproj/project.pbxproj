@@ -41,6 +41,7 @@
 		649C53EF22E839AC00F69812 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649C53EE22E839AC00F69812 /* SettingsViewController.swift */; };
 		649C53F222E83B8A00F69812 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649C53F022E83B8900F69812 /* SettingsTableViewCell.swift */; };
 		649C53F322E83B8A00F69812 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649C53F122E83B8A00F69812 /* SettingsTableViewCell.xib */; };
+		649C540022EABD2400F69812 /* SpringBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649C53FF22EABD2400F69812 /* SpringBouncesContentView.swift */; };
 		64A3E4B222DC25F3005B190C /* EPaperDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3E4B122DC25F3005B190C /* EPaperDetailViewController.swift */; };
 		64A3E4B522DC5C7C005B190C /* MeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3E4B322DC5C7C005B190C /* MeTableViewCell.swift */; };
 		64A3E4B622DC5C7C005B190C /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3E4B422DC5C7C005B190C /* MeTableViewCell.xib */; };
@@ -99,6 +100,7 @@
 		649C53EE22E839AC00F69812 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		649C53F022E83B8900F69812 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		649C53F122E83B8A00F69812 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		649C53FF22EABD2400F69812 /* SpringBouncesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringBouncesContentView.swift; sourceTree = "<group>"; };
 		64A3E4B122DC25F3005B190C /* EPaperDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPaperDetailViewController.swift; sourceTree = "<group>"; };
 		64A3E4B322DC5C7C005B190C /* MeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewCell.swift; sourceTree = "<group>"; };
 		64A3E4B422DC5C7C005B190C /* MeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeTableViewCell.xib; sourceTree = "<group>"; };
@@ -173,7 +175,6 @@
 				64204A8522D590F100DEA9CF /* NewsItem.swift */,
 				64204A9522D7353B00DEA9CF /* EPaper.swift */,
 				64A3E4B722DC629B005B190C /* IconName.swift */,
-				64A3E4CE22E0543A005B190C /* Favorite.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -210,11 +211,20 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
-		64A3E4BF22DDA96F005B190C /* view */ = {
+		649C53FE22EABD1000F69812 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				649C53FF22EABD2400F69812 /* SpringBouncesContentView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		649C540122EABDB100F69812 /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				64A3E4CE22E0543A005B190C /* Favorite.swift */,
+			);
+			path = dao;
 			sourceTree = "<group>";
 		};
 		64C40AE122CB0E2F008F7F9A = {
@@ -238,7 +248,8 @@
 		64C40AEC22CB0E2F008F7F9A /* SwiftHKNews */ = {
 			isa = PBXGroup;
 			children = (
-				64A3E4BF22DDA96F005B190C /* view */,
+				649C540122EABDB100F69812 /* dao */,
+				649C53FE22EABD1000F69812 /* view */,
 				640FDC0922CF4E7D00E507B6 /* cell */,
 				640FDC0622CF2BDD00E507B6 /* viewmodel */,
 				640FDC0522CF2BB900E507B6 /* model */,
@@ -443,6 +454,7 @@
 				64204A9622D7353B00DEA9CF /* EPaper.swift in Sources */,
 				64204A6E22D2F9ED00DEA9CF /* DataList.swift in Sources */,
 				644EB24322E5641A0080D665 /* LoadingViewUtils.swift in Sources */,
+				649C540022EABD2400F69812 /* SpringBouncesContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,7 +603,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swifit.SwiftHKNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -610,7 +622,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swifit.SwiftHKNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
