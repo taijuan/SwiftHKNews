@@ -17,7 +17,7 @@ class FeedbackViewController: UIViewController {
     private var disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(hex: "#f5f5f5")
+        self.view.backgroundColor = lightGray
         setBackTitleBar("Feedback")
         self.initContent()
     }
@@ -36,7 +36,7 @@ extension FeedbackViewController:UITextViewDelegate{
         
         hintView.text = "We are glad to hear from you"
         hintView.font = UIFont.systemFont(ofSize: 17)
-        hintView.textColor = UIColor(hex: "#999999")
+        hintView.textColor = UIColor(hex: "#ff999999")
         hintView.frame = CGRect(x: 8, y: 8, width: width()-16, height: 17)
         hintView.textAlignment = .left
         textView.addSubview(hintView)
@@ -47,7 +47,7 @@ extension FeedbackViewController:UITextViewDelegate{
         self.view.addSubview(numberViewSuper)
         numberView.text = "500/500   "
         numberView.font = UIFont.systemFont(ofSize: 17)
-        numberView.textColor = UIColor(hex: "#999999")
+        numberView.textColor = UIColor(hex: "#ff999999")
         numberView.frame = CGRect(x: 8, y: 0, width: width()-16, height: 30)
         numberView.textAlignment = .right
         numberViewSuper.addSubview(numberView)
@@ -82,10 +82,15 @@ extension FeedbackViewController:UITextViewDelegate{
             self.view.showToast("email is empty")
             return
         }
+        let dialog = LoadingViewController.createLoadingDialog()
+        dialog.showLoading()
         FeedbackViewModel().feedback(content: content, email: email).subscribe(onNext: {data in
             logE(any: data)
             self.view.showToast("Success")
             pop(animated: true)
+            dialog.hideLoading()
+        }, onError:{ error in
+            dialog.hideLoading()
         }).disposed(by: disposeBag)
     }
     func textViewDidChange(_ textView: UITextView) {

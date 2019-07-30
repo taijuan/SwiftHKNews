@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol LoadingViewUtils {
     func showLoading()
@@ -14,27 +15,60 @@ protocol LoadingViewUtils {
 }
 
 class LoadingView :LoadingViewUtils{
-    private let loadingVIew: UIActivityIndicatorView
+    private let loadingVIew: UIActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
     private let view:UIView
     required init(view:UIView){
-        loadingVIew = UIActivityIndicatorView(style: .whiteLarge)
-        loadingVIew.center = view.center
-        loadingVIew.color = .red
         self.view = view
-        view.addSubview(loadingVIew)
+        loadingVIew.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        loadingVIew.color = blue
+        loadingVIew.backgroundColor = halfTransparent
+        loadingVIew.layer.cornerRadius = 8
+        self.view.addSubview(loadingVIew)
         logE(any: "initLoadingView")
     }
     
     func showLoading() {
-        loadingVIew.center = view.center
+        let bounds = view.bounds
+        loadingVIew.center = CGPoint(x: bounds.midX, y: bounds.midY)
         loadingVIew.startAnimating()
         logE(any: "showLoadingView")
     }
     
     func hideLoading() {
-        loadingVIew.stopAnimating()
+        if(loadingVIew.isAnimating){
+            loadingVIew.stopAnimating()
+        }
         logE(any: "hideLoadingView")
     }
+}
+
+
+
+class LoadingViewController:UIViewController,LoadingViewUtils{
+    private let disposeBag = DisposeBag()
+    private lazy var loadingView = LoadingView(view: self.view)
+//    override func viewDidLoad() {
+//        self.modalPresentationStyle = .custom
+//    }
+    static func createLoadingDialog()->LoadingViewController{
+        let dialog =  LoadingViewController()
+        dialog.view.backgroundColor = halfTransparent
+        dialog.modalPresentationStyle = .custom
+        return dialog
+    }
+    func showLoading() {
+        getRootViewController()?.present(self, animated: false, completion: nil)
+        loadingView.showLoading()
+    }
     
+    func hideLoading() {
+        loadingView.hideLoading()
+        getRootViewController()?.dismiss(animated: false, completion: nil)
+    }
     
+    func delayHideLoading(){
+        Observable.just(1).delay(DispatchTimeInterval.seconds(10), scheduler: MainScheduler.instance).subscribe(onNext: nil, onError: nil, onCompleted: {
+            self.hideLoading()
+        }).disposed(by: disposeBag)
+    }
 }

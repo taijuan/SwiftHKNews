@@ -13,12 +13,10 @@ class SpringBouncesContentView: ESTabBarItemContentView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //灰色
-        textColor = UIColor.init(white: 175.0 / 255.0, alpha: 1.0)
-        iconColor = UIColor.init(white: 175.0 / 255.0, alpha: 1.0)
-        //红色
-        highlightTextColor = UIColor(hex: "#0e65d7")
-        highlightIconColor = UIColor(hex: "#0e65d7")
+        textColor = gray
+        iconColor = gray
+        highlightTextColor = blue
+        highlightIconColor = blue
     }
     
     public required init?(coder aDecoder: NSCoder) {

@@ -13,9 +13,8 @@ import RxSwift
 class EPaperViewController: UIViewController {
     private var data:Array<EPaper> = []
     private let disposeBag = DisposeBag()
-    private let pagerView = FSPagerView()
     private let h = width()*729/1080
-    private lazy var loadingView:LoadingView = LoadingView(view: self.view)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -32,35 +31,32 @@ class EPaperViewController: UIViewController {
         epaper_title.contentMode = .scaleAspectFill
         epaper_title.image = UIImage(named: "epaper_title")
         initUI()
-        let epaperViewModel = EPaperViewModel()
-        epaperViewModel.loadData().subscribe(onNext: {data in
-            self.data.removeAll()
-            self.data += data
-            logE(any: self.data)
-            self.reloadData()
-        }, onError: nil, onCompleted: {
-            self.loadingView.hideLoading()
-        }, onDisposed: nil).disposed(by: disposeBag)
     }
 }
 
-extension PaperViewController:FSPagerViewDataSource,FSPagerViewDelegate{
+extension EPaperViewController:FSPagerViewDataSource,FSPagerViewDelegate{
     func initUI(){
-        self.view.addSubview(pagerView)
-        pagerView.frame = CGRect(x: 0, y: h-48, width: width(), height: height()-h+48-tabBarHeight()-bottom())
+        let rootPaperView = UIView(frame:CGRect(x: 0, y: h-48, width: width(), height: height()-h+48-tabBarHeight()-bottom()))
+        self.view.addSubview(rootPaperView)
+        let pagerView = FSPagerView(frame:rootPaperView.bounds)
+        rootPaperView.addSubview(pagerView)
         pagerView.register(EPaperFSPagerViewCell.self, forCellWithReuseIdentifier: "EPaperFSPagerViewCell")
         pagerView.dataSource = self
         pagerView.delegate = self
         pagerView.interitemSpacing = 36
         pagerView.itemSize = CGSize(width: width()*2/3, height: height()-h+48-tabBarHeight()-bottom())
         pagerView.isInfinite = false
-        self.loadingView = LoadingView(view: self.pagerView)
-        self.loadingView.showLoading()
+        let loadingView = LoadingView(view: rootPaperView)
+        loadingView.showLoading()
+        EPaperViewModel().loadData().subscribe(onNext: {data in
+            self.data.removeAll()
+            self.data += data
+            pagerView.reloadData()
+        }, onError: nil, onCompleted: {
+            loadingView.hideLoading()
+        }, onDisposed: nil).disposed(by: disposeBag)
     }
     
-    func reloadData(){
-        self.pagerView.reloadData()
-    }
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return data.count
     }

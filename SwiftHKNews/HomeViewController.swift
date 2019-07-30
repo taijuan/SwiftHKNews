@@ -17,7 +17,7 @@ class HomeViewController: ESTabBarController {
         news.tabBarItem = createTabItem(name: "news")
         let focus = NewsViewController(isNews: false)
         focus.tabBarItem = createTabItem(name: "focus")
-        let epaper = PaperViewController()
+        let epaper = EPaperViewController()
         epaper.tabBarItem = createTabItem(name: "epaper")
         let video = VideoViewController()
         video.tabBarItem = createTabItem(name: "video")
@@ -32,5 +32,6 @@ class HomeViewController: ESTabBarController {
         let tabItem = ESTabBarItem(SpringBouncesContentView(),title: name, image: UIImage(named: "\(name)")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "\(name)_selected")?.withRenderingMode(.alwaysOriginal))
         return tabItem
     }
+    
 }
 

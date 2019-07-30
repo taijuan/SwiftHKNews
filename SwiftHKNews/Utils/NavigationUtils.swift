@@ -8,43 +8,42 @@
 
 import UIKit
 
-func currentViewController()->UIViewController?{
-    return UIViewController.currentViewController()
+func getWindow()->UIWindow?{
+    let appDelegate:AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+    return appDelegate?.window
 }
-
+func getRootViewController()->UIViewController?{
+    return getWindow()?.rootViewController
+}
 func setRootViewController(_ viewController:UIViewController){
     let rootViewController = UINavigationController(rootViewController: viewController)
-    rootViewController.navigationBar.isHidden = true
-    let appDelegate:AppDelegate? = UIApplication.shared.delegate as? AppDelegate
-    appDelegate?.window?.rootViewController = rootViewController
+    rootViewController.isNavigationBarHidden = true
+    getWindow()?.rootViewController = rootViewController
 }
 func pop(animated: Bool){
-    currentViewController()?.navigationController?.popViewController(animated: animated)
+    let viewController = getWindow()?.rootViewController
+    if viewController is UINavigationController{
+        (viewController as! UINavigationController).popViewController(animated: animated)
+    }else{
+        viewController?.dismiss(animated: animated, completion: nil)
+    }
+    
 }
 
 func popRootController(){
-    currentViewController()?.navigationController?.popToRootViewController(animated: true)
-}
-//func popAndPush(_ viewController:UIViewController,animated:Bool){
-//    currentViewController()?.navigationController?.popViewController(animated: true)
-//    currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)
-//}
-
-func push(_ viewController:UIViewController,animated:Bool){
-    currentViewController()?.navigationController?.pushViewController(viewController, animated: animated)
+    let viewController = getWindow()?.rootViewController
+    if viewController is UINavigationController{
+        (viewController as! UINavigationController).popViewController(animated: true)
+    }else{
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }
 
-extension UIViewController {
-    class func currentViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let nav = base as? UINavigationController {
-            return currentViewController(base: nav.visibleViewController)
-        }
-        if let tab = base as? UITabBarController {
-            return currentViewController(base: tab.selectedViewController)
-        }
-        if let presented = base?.presentedViewController {
-            return currentViewController(base: presented)
-        }
-        return base
+func push(_ controller:UIViewController,animated:Bool){
+    let viewController = getWindow()?.rootViewController
+    if viewController is UINavigationController{
+        (viewController as! UINavigationController).pushViewController(controller, animated: animated)
+    }else{
+        viewController?.present(controller,animated: true, completion: nil)
     }
 }

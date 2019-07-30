@@ -13,7 +13,7 @@ class MineViewController: UIViewController {
     let data:Array<IconName> = [favorites,facebook,twitter,feedback,settings]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(hex: "#f5f5f5")
+        self.view.backgroundColor = lightGray
         setHeaderTitleBar(title: "Me")
         initTableView()
     }

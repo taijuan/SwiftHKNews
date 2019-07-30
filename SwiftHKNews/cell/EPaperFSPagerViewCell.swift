@@ -25,7 +25,6 @@ class EPaperFSPagerViewCell: FSPagerViewCell {
         setLoading()
         let url = URL(string: data.imageUrl)
         let w = contentView.bounds.width
-        logE(any:"width:\(w) , height:\(h)")
         let processor = ResizingImageProcessor(referenceSize: CGSize(width: w*density, height: h*density), mode: .aspectFit)
         self.imageView?.contentMode = .scaleAspectFit
         self.imageView?.kf.setImage(
@@ -39,7 +38,6 @@ class EPaperFSPagerViewCell: FSPagerViewCell {
             result in
             switch result{
             case .success(let value):
-                logE(any: value.image.size)
                 self.makeConstraints(height: value.image.size.height/density)
             case .failure(let error):
                 logE(any:"loading epaper image error :\(error)")

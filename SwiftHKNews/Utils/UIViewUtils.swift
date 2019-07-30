@@ -41,55 +41,7 @@ extension UITableView {
     }
 }
 
-extension UIViewController {
-    func setHeaderTitleBar(title:String = "Video"){
-        //设置标题栏背景
-        let  headerBackgroundView = UIView()
-        headerBackgroundView.frame = CGRect(x: 0, y: 0, width: width(), height: statusHeight+toolBarHeight())
-        headerBackgroundView.setGradientLayer()
-        self.view.addSubview(headerBackgroundView)
-        
-        //添加标题
-        let titleView = UILabel()
-        titleView.frame = CGRect(x: 0, y: statusHeight, width: width(), height: toolBarHeight())
-        titleView.textColor = UIColor.white
-        titleView.font = UIFont.systemFont(ofSize: 21)
-        titleView.textAlignment = .center
-        titleView.text = title
-        self.view.addSubview(titleView)
-    }
-    
-    func setBackTitleBar(_ title:String){
-        let headerView = UIView()
-        self.view.addSubview(headerView)
-        headerView.backgroundColor = .white
-        headerView.frame = CGRect(x: 0, y: 0, width: width(), height: statusHeight+toolBarHeight())
-        let backImageView = UIImageView()
-        self.view.addSubview(backImageView)
-        backImageView.frame = CGRect(x: 0, y: statusHeight, width: toolBarHeight(), height: toolBarHeight())
-        backImageView.contentMode = .center
-        backImageView.image = UIImage(named: "back")
-        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
-        backImageView.addGestureRecognizer(tap)
-        backImageView.isUserInteractionEnabled = true
-        
-        let titleView = UILabel()
-        self.view.addSubview(titleView)
-        titleView.frame = CGRect(x: toolBarHeight(), y: statusHeight, width: width()-toolBarHeight()-toolBarHeight(), height: toolBarHeight())
-        titleView.text = title
-        titleView.textColor = .black
-        titleView.font = UIFont.systemFont(ofSize: 21)
-        titleView.textAlignment = .center
-        
-        let bottomLine = UIView()
-        bottomLine.frame = CGRect(x: 0, y: statusHeight+toolBarHeight()-0.5, width: width(), height: 0.5)
-        bottomLine.backgroundColor = .lightGray
-        headerView.addSubview(bottomLine)
-    }
-    @objc func back(){
-        pop(animated: true)
-    }
-}
+
 extension UIView {
     //设置UIVIew，UIImageView等的边框，圆角，阴影
     func setViewShadow(
@@ -111,9 +63,9 @@ extension UIView {
     
     //设置UIView渐变背景
     func setGradientLayer(
-        startColor:UIColor = UIColor(hex: "#5d9cec"),
+        startColor:UIColor = lightBlue,
         //        centerColor:UIColor = UIColor(hex: "#0e65d7"),
-        endColor:UIColor = UIColor(hex: "#0e65d7")
+        endColor:UIColor = blue
         ) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
@@ -124,26 +76,6 @@ extension UIView {
     }
 }
 
-
-extension UIColor {
-    convenience init(hex: String) {
-        let hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        let scanner = Scanner(string: hexString)
-        if hexString.hasPrefix("#") {
-            scanner.scanLocation = 1
-        }
-        var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
-        let mask = 0x000000FF
-        let r = Int(color >> 16) & mask
-        let g = Int(color >> 8) & mask
-        let b = Int(color) & mask
-        let red   = CGFloat(r) / 255.0
-        let green = CGFloat(g) / 255.0
-        let blue  = CGFloat(b) / 255.0
-        self.init(red: red, green: green, blue: blue, alpha: 1)
-    }
-}
 
 extension WKWebView {
     convenience init(x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat) {

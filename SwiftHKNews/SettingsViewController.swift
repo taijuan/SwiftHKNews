@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(hex: "#f5f5f5")
+        self.view.backgroundColor = lightGray
         self.setBackTitleBar("Settings")
         self.initTableView()
     }
