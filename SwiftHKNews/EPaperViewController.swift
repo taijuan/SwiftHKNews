@@ -10,7 +10,7 @@ import UIKit
 import FSPagerView
 import RxSwift
 
-class EPaperViewController: UIViewController {
+class EPaperViewController: BaseViewController {
     private var data:Array<EPaper> = []
     private let disposeBag = DisposeBag()
     private let h = width()*729/1080

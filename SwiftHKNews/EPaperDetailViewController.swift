@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import JavaScriptCore
 
-class EPaperDetailViewController: UIViewController {
+class EPaperDetailViewController: BaseViewController {
     private let data:EPaper
     private let webView = WKWebView(x: 0, y: statusHeight+toolBarHeight(), width: width(), height: height()-statusHeight-toolBarHeight()-bottom())
     private lazy var loadingView  = LoadingView(view: self.view)

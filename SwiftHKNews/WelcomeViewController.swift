@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import RxSwift
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: BaseViewController {
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()

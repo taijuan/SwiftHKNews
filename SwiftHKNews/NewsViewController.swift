@@ -9,7 +9,7 @@
 import UIKit
 import DNSPageView
 
-class NewsViewController: UIViewController {
+class NewsViewController: BaseViewController {
     private var isNews:Bool = true
     private var tabNames:Array<String> = []
     private var codes:Array<String> = []

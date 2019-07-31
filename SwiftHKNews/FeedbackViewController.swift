@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class FeedbackViewController: UIViewController {
+class FeedbackViewController: BaseViewController {
     private let textView = UITextView()
     private let hintView = UILabel()
     private let numberView = UILabel()

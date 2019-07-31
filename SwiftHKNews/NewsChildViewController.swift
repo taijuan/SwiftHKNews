@@ -11,7 +11,7 @@ import RxSwift
 import FSPagerView
 
 
-class NewsChildViewController: UIViewController {
+class NewsChildViewController: BaseViewController {
     private var code :String = ""
     private var pagerData:Array<NewsItem> = []
     private var data:Array<NewsItem> = []

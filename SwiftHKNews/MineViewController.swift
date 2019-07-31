@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MineViewController: UIViewController {
+class MineViewController: BaseViewController {
     
     let data:Array<IconName> = [favorites,facebook,twitter,feedback,settings]
     override func viewDidLoad() {

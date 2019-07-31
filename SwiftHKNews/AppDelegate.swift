@@ -57,5 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    //设置每个viewController屏幕h旋转配置
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        let controller = window?.currentViewController()
+        switch controller {
+        case is VideoDetailViewController:
+            return .allButUpsideDown
+        default:
+            return .portrait
+        }
+    }
 }
 

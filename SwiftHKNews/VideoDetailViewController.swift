@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import BMPlayer
 
-class VideoDetailViewController: UIViewController {
+class VideoDetailViewController: BaseViewController {
     private let detail:NewsItem
     private let tableView = UITableView()
     private var data:Array<NewsItem> = []
@@ -33,6 +33,7 @@ class VideoDetailViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -40,14 +41,6 @@ class VideoDetailViewController: UIViewController {
         initActionView()
         initVideoPlayer()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.player.play()
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.player.pause(allowAutoPlay: false)
-    }
-    
-    
     
     func initActionView(){
         let actionView = UIView()
@@ -126,6 +119,14 @@ extension VideoDetailViewController:BMPlayerDelegate{
         }).disposed(by: disposeBag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.player.play()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.player.pause(allowAutoPlay: false)
+    }
+    
+    
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         
     }
@@ -144,9 +145,9 @@ extension VideoDetailViewController:BMPlayerDelegate{
     
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
         if isFullscreen == true {
-            self.player.frame = CGRect(x: 0, y: 0, width: width(), height: height())
+            player.frame = CGRect(x: 0, y: 0, width: width(), height: height())
         }else{
-            self.player.frame = CGRect(x: 0, y: statusHeight, width: width(), height: videoViewHeight)
+            player.frame = CGRect(x: 0, y: statusHeight, width: width(), height: videoViewHeight)
         }
     }
 }

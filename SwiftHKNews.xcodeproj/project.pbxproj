@@ -38,6 +38,8 @@
 		644EB24322E5641A0080D665 /* LoadingViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644EB24222E5641A0080D665 /* LoadingViewUtils.swift */; };
 		6456FDCF22EFF3CD00F3AA45 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6456FDCE22EFF3CD00F3AA45 /* ColorUtils.swift */; };
 		6456FDD122EFF4C600F3AA45 /* UIViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6456FDD022EFF4C600F3AA45 /* UIViewControllerUtils.swift */; };
+		6456FDD522F1497500F3AA45 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6456FDD422F1497500F3AA45 /* BaseViewController.swift */; };
+		6456FDD722F16A3400F3AA45 /* WindowUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6456FDD622F16A3400F3AA45 /* WindowUtils.swift */; };
 		649C53EB22E6FDA600F69812 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649C53EA22E6FDA600F69812 /* LaunchScreen.storyboard */; };
 		649C53ED22E831D800F69812 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649C53EC22E831D800F69812 /* CacheManager.swift */; };
 		649C53EF22E839AC00F69812 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649C53EE22E839AC00F69812 /* SettingsViewController.swift */; };
@@ -99,6 +101,8 @@
 		644EB24222E5641A0080D665 /* LoadingViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingViewUtils.swift; path = ../model/LoadingViewUtils.swift; sourceTree = "<group>"; };
 		6456FDCE22EFF3CD00F3AA45 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
 		6456FDD022EFF4C600F3AA45 /* UIViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtils.swift; sourceTree = "<group>"; };
+		6456FDD422F1497500F3AA45 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6456FDD622F16A3400F3AA45 /* WindowUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowUtils.swift; sourceTree = "<group>"; };
 		649C53EA22E6FDA600F69812 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		649C53EC22E831D800F69812 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		649C53EE22E839AC00F69812 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				649C53EC22E831D800F69812 /* CacheManager.swift */,
 				6456FDCE22EFF3CD00F3AA45 /* ColorUtils.swift */,
 				6456FDD022EFF4C600F3AA45 /* UIViewControllerUtils.swift */,
+				6456FDD622F16A3400F3AA45 /* WindowUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				64C40AF122CB0E2F008F7F9A /* Main.storyboard */,
 				64C40AF422CB0E3A008F7F9A /* Assets.xcassets */,
 				64C40AF922CB0E3A008F7F9A /* Info.plist */,
+				6456FDD422F1497500F3AA45 /* BaseViewController.swift */,
 				640FDBE422CDDFA400E507B6 /* WelcomeViewController.swift */,
 				640FDBE522CDDFA400E507B6 /* WelcomeViewController.xib */,
 				640FDBED22CE095E00E507B6 /* HomeViewController.swift */,
@@ -429,6 +435,7 @@
 				64204A7422D329B400DEA9CF /* ConfigUtils.swift in Sources */,
 				640FDBFF22CEF91800E507B6 /* VideoViewController.swift in Sources */,
 				64204A9422D70AF500DEA9CF /* NewsDetailViewController.swift in Sources */,
+				6456FDD722F16A3400F3AA45 /* WindowUtils.swift in Sources */,
 				64A3E4B822DC629B005B190C /* IconName.swift in Sources */,
 				64204A9B22D8283600DEA9CF /* EPaperFSPagerViewCell.swift in Sources */,
 				64204A6A22D2F5F900DEA9CF /* BaseRes.swift in Sources */,
@@ -445,6 +452,7 @@
 				64204A8122D4936000DEA9CF /* NewsChildViewController.swift in Sources */,
 				64A3E4C622DDCB72005B190C /* VideoHeaderTableViewCell.swift in Sources */,
 				64204A7222D3271C00DEA9CF /* LogUtils.swift in Sources */,
+				6456FDD522F1497500F3AA45 /* BaseViewController.swift in Sources */,
 				64A3E4B522DC5C7C005B190C /* MeTableViewCell.swift in Sources */,
 				640FDBFB22CEF8FE00E507B6 /* EPaperViewController.swift in Sources */,
 				640FDBF322CEF8D000E507B6 /* NewsViewController.swift in Sources */,

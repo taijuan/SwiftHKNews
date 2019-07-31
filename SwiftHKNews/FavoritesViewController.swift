@@ -8,7 +8,7 @@
 
 import UIKit
 import RxSwift
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: BaseViewController {
     private let tableView = UITableView()
     private var data:Array<NewsItem> = []
     private var disposeBag = DisposeBag()

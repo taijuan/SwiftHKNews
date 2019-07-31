@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class VideoViewController: UIViewController{
+class VideoViewController: BaseViewController{
     
     private let disposeBag = DisposeBag()
     private var data : Array<NewsItem> = []

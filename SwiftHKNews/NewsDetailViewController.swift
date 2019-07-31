@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import RxSwift
 
-class NewsDetailViewController: UIViewController,WKNavigationDelegate {
+class NewsDetailViewController: BaseViewController,WKNavigationDelegate {
     
     private let data:NewsItem
     private let disposeBag = DisposeBag()

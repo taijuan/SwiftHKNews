@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: BaseViewController {
 
     private let data:String
     private let name:String
