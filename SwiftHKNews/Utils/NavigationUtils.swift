@@ -17,7 +17,10 @@ func getRootViewController()->UIViewController?{
 }
 func setRootViewController(_ viewController:UIViewController){
     let rootViewController = UINavigationController(rootViewController: viewController)
-    rootViewController.isNavigationBarHidden = true
+    //隐藏标题栏方式
+    //rootViewController.isNavigationBarHidden = true
+    //该方式隐藏标题栏，会导致UINavigation侧滑返回失效
+    rootViewController.navigationBar.isHidden = true
     getWindow()?.rootViewController = rootViewController
 }
 func pop(animated: Bool){

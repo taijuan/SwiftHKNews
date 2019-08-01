@@ -10,16 +10,6 @@ import UIKit
 import ESTabBarController_swift
 
 class HomeViewController: ESTabBarController {
-    override var shouldAutorotate: Bool{
-        get {
-            return false
-        }
-    }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
-        get {
-            return .portrait
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
