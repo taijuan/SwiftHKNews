@@ -36,6 +36,7 @@ class HomeViewController: ESTabBarController {
         self.viewControllers = [news,focus,epaper,video,me]
         self.tabBar.frame = CGRect(x: 0, y: height()-statusHeight, width: width(), height: tabBarHeight()+bottom())
         self.tabBar.backgroundColor = .white
+        testStrings()
     }
     
     func createTabItem(name:String)->ESTabBarItem{
@@ -43,5 +44,14 @@ class HomeViewController: ESTabBarController {
         return tabItem
     }
     
+    func testStrings() {
+        logE(any: Bundle.main.localizedString(forKey: "test", value: "", table: nil))
+        logE(any: Bundle.main.localizedString(forKey: "test", value: "", table: "Main"))
+        logE(any: NSLocalizedString("test", tableName: "Main", bundle: Bundle.main, value: "", comment: ""))
+        logE(any: NSLocalizedString("news", comment: ""))
+        
+        logE(any: Bundle.main.localizedString(forKey: "focus", value: "", table: "Values"))
+        logE(any: Bundle.main.localizedString(forKey: "news", value: "", table: "Localizable"))
+    }
 }
 
