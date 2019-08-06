@@ -62,11 +62,7 @@ extension UIView {
     }
     
     //设置UIView渐变背景
-    func setGradientLayer(
-        startColor:UIColor = lightBlue,
-        //        centerColor:UIColor = UIColor(hex: "#0e65d7"),
-        endColor:UIColor = blue
-        ) {
+    func setGradientLayer(startColor:UIColor = lightBlue,endColor:UIColor = blue) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]

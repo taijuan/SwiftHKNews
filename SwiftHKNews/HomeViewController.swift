@@ -27,13 +27,14 @@ class HomeViewController: ESTabBarController {
         self.tabBar.frame = CGRect(x: 0, y: height()-statusHeight, width: width(), height: tabBarHeight()+bottom())
         self.tabBar.backgroundColor = .white
         testStrings()
+       
     }
     
     func createTabItem(name:String)->ESTabBarItem{
         let tabItem = ESTabBarItem(SpringBouncesContentView(),title: name, image: UIImage(named: "\(name)")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "\(name)_selected")?.withRenderingMode(.alwaysOriginal))
         return tabItem
     }
-    
+    //MARK:国际化字符串获取，测试
     func testStrings() {
         logE(any: Bundle.main.localizedString(forKey: "test", value: "", table: nil))
         logE(any: Bundle.main.localizedString(forKey: "test", value: "", table: "Main"))
@@ -42,6 +43,13 @@ class HomeViewController: ESTabBarController {
         
         logE(any: Bundle.main.localizedString(forKey: "focus", value: "", table: "Values"))
         logE(any: Bundle.main.localizedString(forKey: "news", value: "", table: "Localizable"))
+    }
+    
+    //MARK:渐变图片生成测试
+    func testCreateUIImage(){
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        imageView.image = UIImage.createGradientImage([lightBlue,blue], rect: CGRect(x: 0, y: 0, width: 300, height: 300))
+        self.view.addSubview(imageView)
     }
 }
 

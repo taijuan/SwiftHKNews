@@ -29,7 +29,7 @@ class EPaperViewModel{
                 let response = Alamofire.request(url, method: .get).responseString()
                 logE(any: url)
                 let a = EPaperImages.deserialize(from: response.result.value)
-                item.imageUrl = "\(EPaperDNS)/pubs\(a!.data[0].snapshotBigUrl)"
+                item.imageUrl = "\(EPaperDNS)/pubs\(a?.data[0].snapshotBigUrl ?? "")"
             }
             observer.onNext(arr)
             observer.onCompleted()

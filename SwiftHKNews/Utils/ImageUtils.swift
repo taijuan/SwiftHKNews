@@ -13,15 +13,15 @@ import Kingfisher
 extension UIImageView {
     func setImage(imageUrl:String){
         let url = URL(string: imageUrl)
-//        let w = self.bounds.width
-//        let h = self.bounds.height
-//        logE(any:"width:\(w) , height:\(h)")
-//        let processor = ResizingImageProcessor(referenceSize: CGSize(width: w, height: h), mode: .aspectFit)
+        //        let w = self.bounds.width
+        //        let h = self.bounds.height
+        //        logE(any:"width:\(w) , height:\(h)")
+        //        let processor = ResizingImageProcessor(referenceSize: CGSize(width: w, height: h), mode: .aspectFit)
         self.kf.setImage(
             with: url,
             placeholder:UIImage(named: "pic_loading"),
             options: [
-//                .processor(processor),
+                //                .processor(processor),
                 .transition(.fade(1))
             ]
         )
@@ -29,22 +29,26 @@ extension UIImageView {
 }
 
 extension UIImage {
-//    func resize(width:CGFloat = 28,height:CGFloat = 28) -> UIImage? {
-        //let w = self.size.width
-        //let h = self.size.height
-        //let dw = w/width
-        //let dh = h/height
-        //logE(any: "w: \(w), h: \(h)")
-        //logE(any: "dw: \(dw), dh: \(dh)")
-        //let scale = CGFloat.maximum(dw, dh)
-        //let sw = w/scale
-        //let sh = h/scale
-        //logE(any: "sw: \(sw), sh: \(sh)")
-        //UIGraphicsBeginImageContext(CGSize(width: sw, height: sh))
-        //draw(in: CGRect(x: 0, y: 0, width: sw, height: sh))
-        //let image = UIGraphicsGetImageFromCurrentImageContext()
-        //UIGraphicsEndImageContext()
-//        return self
-//    }
-    
+    //MARK:创建纯色图片
+    class func createColorImage(_ color:UIColor,rect:CGRect)->UIImage?{
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    //MARK:创建渐变图片
+    class func createGradientImage(_ gradientColors:[UIColor], rect:CGRect,start:CGPoint? = nil,end:CGPoint? = nil)->UIImage?{
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let colors:CFArray = gradientColors.map {(color: UIColor) -> CGColor in return color.cgColor} as CFArray
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: nil)!
+        context?.drawLinearGradient(gradient, start: start ?? CGPoint(x: 0, y: 0), end: end ?? CGPoint(x: rect.width, y: rect.height), options: CGGradientDrawingOptions(rawValue: 0))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }
