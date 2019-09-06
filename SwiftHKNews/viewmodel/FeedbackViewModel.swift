@@ -8,13 +8,12 @@
 
 import RxSwift
 import Alamofire
-import Alamofire_Synchronous
 
 class FeedbackViewModel{
     func feedback(content:String,email:String)->Observable<String>{
         return Observable<String>.create{observer ->Disposable in
-            let res = Alamofire.request("\(DNS)/addFeedback?content=\(content)&email=\(email)", method: .get).responseString()
-            observer.onNext(res.result.value ?? "")
+            _ = AF.request("\(DNS)/addFeedback?content=\(content)&email=\(email)",method: .get).responseString()
+            observer.onNext("")
             observer.onCompleted()
             return Disposables.create()
         }

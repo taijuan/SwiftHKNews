@@ -8,7 +8,6 @@
 
 import RxSwift
 import Alamofire
-import Alamofire_Synchronous
 class EPaperViewModel{
     private let epaperData = BehaviorSubject<Array<EPaper>>(value: [])
     let refresh:Observable<Array<EPaper>>
@@ -18,20 +17,28 @@ class EPaperViewModel{
     
     func loadData()-> Observable<Array<EPaper>>{
         return Observable<Array<EPaper>>.create { observer -> Disposable in
-            let response = Alamofire.request("\(EPaperDNS)/pubs/config.json", method: .get).responseString()
-
-            let a = EpaperData.deserialize(from: response.result.value)
-            let arr = (a?.newestPubDate ?? []).filter({a in return a.publicationConfig?.isHide == 0})
-            
-            for item in arr {
-                let url = "\(EPaperDNS)/pubs/\(item.publicationCode)/\(self.strFormat(date: item.pubDate))/issue.json"
-                item.htmlUrl = "\(EPaperDNS)/mobile/index.html?pubCode=\(item.publicationCode)&pubDate=\(item.pubDate)"
-                let response = Alamofire.request(url, method: .get).responseString()
-                logE(any: url)
-                let a = EPaperImages.deserialize(from: response.result.value)
-                item.imageUrl = "\(EPaperDNS)/pubs\(a?.data[0].snapshotBigUrl ?? "")"
+            let response = AF.request("\(EPaperDNS)/pubs/config.json", method: .get).responseString()
+            switch(response.result){
+            case .failure(_):
+                observer.onNext([])
+            case .success(let success):
+                let a = EpaperData.deserialize(from: success)
+                let arr = (a?.newestPubDate ?? []).filter({a in return a.publicationConfig?.isHide == 0})
+                for item in arr {
+                    let url = "\(EPaperDNS)/pubs/\(item.publicationCode)/\(self.strFormat(date: item.pubDate))/issue.json"
+                    item.htmlUrl = "\(EPaperDNS)/mobile/index.html?pubCode=\(item.publicationCode)&pubDate=\(item.pubDate)"
+                    let response = AF.request(url, method: .get).responseString()
+                    logE(any: url)
+                    switch(response.result){
+                    case .success(let success):
+                        let a = EPaperImages.deserialize(from: success)
+                        item.imageUrl = "\(EPaperDNS)/pubs\(a?.data[0].snapshotBigUrl ?? "")"
+                    case .failure(_):
+                        item.imageUrl = ""
+                    }
+                }
+                observer.onNext(arr)
             }
-            observer.onNext(arr)
             observer.onCompleted()
             return Disposables.create()
         }

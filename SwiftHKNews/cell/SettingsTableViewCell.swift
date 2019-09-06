@@ -14,6 +14,7 @@ class SettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var cacheSizeView: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .default
         self.contentView.backgroundColor = .white
     }
 

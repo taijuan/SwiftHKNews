@@ -15,7 +15,7 @@ class MeTableViewCell: UITableViewCell {
     @IBOutlet weak var rightIcon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.selectionStyle = .default
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

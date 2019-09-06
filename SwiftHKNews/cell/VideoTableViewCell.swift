@@ -18,7 +18,7 @@ class VideoTableViewCell: UITableViewCell {
     @IBOutlet weak var videoSubject: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        logE(any: "awakeFromNib")
+        self.selectionStyle = .default
         self.videoView.setViewShadow()
     }
 

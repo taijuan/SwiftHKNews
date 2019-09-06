@@ -7,13 +7,12 @@
 //
 import RxSwift
 import Alamofire
-import Alamofire_Synchronous
 
 class LikeViewModel{
     func like(_ dataId:String)->Observable<String>{
         return Observable<String>.create{observer ->Disposable in
-            let res = Alamofire.request("\(DNS)/like?newsId=\(dataId)", method: .get).responseString()
-            observer.onNext(res.result.value ?? "")
+            _ = AF.request("\(DNS)/like?newsId=\(dataId)", method: .get).responseString()
+            observer.onNext("")
             observer.onCompleted()
             return Disposables.create()
         }

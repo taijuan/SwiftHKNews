@@ -6,15 +6,15 @@ target 'SwiftHKNews' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Kingfisher'
-  pod 'Alamofire-Synchronous'
   pod 'HandyJSON'
   pod 'MJRefresh'
-  pod 'DNSPageView'
   pod 'FSPagerView'
   pod 'RealmSwift'
   pod 'BMPlayer'
   pod 'Toast-Swift'
   pod 'ESTabBarController-swift'
   pod 'IQKeyboardManagerSwift'
-  
+  pod 'JXSegmentedView'
+  pod 'Alamofire', '~> 5.0.0-rc.1'
+
 end

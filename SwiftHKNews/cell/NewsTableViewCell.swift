@@ -17,6 +17,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var newsTime: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .default
         self.newsView.setViewShadow()
     }
 

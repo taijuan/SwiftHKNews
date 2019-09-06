@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import FSPagerView
-
+import JXSegmentedView
 
 class NewsChildViewController: BaseViewController {
     private var code :String = ""
@@ -158,5 +158,11 @@ extension NewsChildViewController:FSPagerViewDataSource,FSPagerViewDelegate{
     
     func pagerViewDidEndScrollAnimation(_ pagerView: FSPagerView) {
         self.pageControl.currentPage = pagerView.currentIndex
+    }
+}
+
+extension NewsChildViewController : JXSegmentedListContainerViewListDelegate {
+    func listView() -> UIView {
+        return view
     }
 }

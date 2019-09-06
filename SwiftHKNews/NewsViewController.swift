@@ -7,12 +7,22 @@
 //
 
 import UIKit
-import DNSPageView
+import JXSegmentedView
 
 class NewsViewController: BaseViewController {
     private var isNews:Bool = true
     private var tabNames:Array<String> = []
     private var codes:Array<String> = []
+    private let segmentedView:JXSegmentedView = JXSegmentedView()
+    private lazy var segmentedListContainerView : JXSegmentedListContainerView = JXSegmentedListContainerView(dataSource: self)
+    private lazy var dataSource:JXSegmentedTitleDataSource = {
+        let dataSource = JXSegmentedTitleDataSource()
+        dataSource.isTitleColorGradientEnabled = true
+        dataSource.titles = tabNames
+        dataSource.reloadData(selectedIndex: 0)
+        return dataSource
+    }()
+    
     init(isNews:Bool = true) {
         super.init(nibName: nil, bundle: nil)
         self.isNews = isNews
@@ -29,38 +39,54 @@ class NewsViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var pageViewManager: DNSPageViewManager = {
-        // 创建DNSPageStyle，设置样式
-        self.view.backgroundColor = UIColor.white
-        let style = DNSPageStyle()
-        style.isShowBottomLine = true
-        style.isTitleViewScrollEnabled = true
-        style.titleViewBackgroundColor = UIColor.clear
-        style.contentViewBackgroundColor = UIColor.clear
-        style.titleMargin = 16
-        
-        // 创建每一页对应的controller
-        let childViewControllers: [UIViewController] = self.codes.map { code -> UIViewController in
-            let controller = NewsChildViewController(code: code)
-            addChild(controller)
-            return controller
-        }
-        
-        return DNSPageViewManager(style: style, titles: self.tabNames, childViewControllers: childViewControllers)
-    }()
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLayoutSubviews() {
         var y = statusHeight+toolBarHeight()
-        pageViewManager.titleView.frame = CGRect(x: 8, y: y, width: width()-16, height: pageTabBarHeight())
-        self.view.addSubview(pageViewManager.titleView)
+        segmentedView.frame = CGRect(x: 0, y: y, width: width(), height: pageTabBarHeight())
         y += pageTabBarHeight()
         let h = height()-y-tabBarHeight()-bottom()
-        pageViewManager.contentView.frame = CGRect(x: 0,y: y,width: width(),height: h)
-        self.view.addSubview(pageViewManager.contentView)
+        segmentedListContainerView.frame =  CGRect(x: 0,y: y,width: width(),height: h)
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let indicator = JXSegmentedIndicatorBackgroundView()
+        indicator.isIndicatorConvertToItemFrameEnabled = true
+        indicator.indicatorHeight = 30
+        segmentedView.indicators = [indicator]
+        segmentedView.dataSource = dataSource
+        segmentedView.delegate = self
+        self.view.addSubview(segmentedView)
+        self.segmentedView.contentScrollView = segmentedListContainerView.scrollView
+        segmentedListContainerView.didAppearPercent = 0.01
+        self.view.addSubview(segmentedListContainerView)
         if isNews {
             self.setHeaderTitleBar(title: "News")
         }else{
             self.setHeaderTitleBar(title: "Focus")
         }
+    }
+}
+
+extension NewsViewController:JXSegmentedListContainerViewDataSource{
+    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
+        return self.dataSource.dataSource.count
+    }
+    
+    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
+        return NewsChildViewController(code: codes[index])
+    }
+}
+
+extension NewsViewController: JXSegmentedViewDelegate {
+    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {
+    }
+    
+    func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) {
+        //传递didClickSelectedItemAt事件给listContainerView，必须调用！！！
+        self.segmentedListContainerView.didClickSelectedItem(at: index)
+    }
+    
+    func segmentedView(_ segmentedView: JXSegmentedView, scrollingFrom leftIndex: Int, to rightIndex: Int, percent: CGFloat) {
+        //传递scrollingFrom事件给listContainerView，必须调用！！！
+        self.segmentedListContainerView.segmentedViewScrolling(from: leftIndex, to: rightIndex, percent: percent, selectedIndex: segmentedView.selectedIndex)
     }
 }

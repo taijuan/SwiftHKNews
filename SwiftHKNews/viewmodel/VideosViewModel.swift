@@ -29,44 +29,41 @@ class VideosViewModel {
     }
     
     func refreshData(){
-        Alamofire.request(
-            "\(DNS)/selectNewsList?currentPage=1&dataType=3",
-            method: .get)
-            .responseString { response in
-                if(response.result.isFailure){
-                    self.stateBV.onNext(.RefreshError(response.result.description))
-                    return
-                }
-                let a = BaseRes<DataList<NewsItem>>.deserialize(from: response.result.value)
-                if(a?.resCode != 200){
-                    self.stateBV.onNext(.RefreshError(a?.resMsg ?? ""))
-                    return
-                }
-                let b = a?.resObject?.dateList ?? []
-                if(a?.resObject?.totalPage == a?.resObject?.totalPage){
-                    if b.isEmpty {
-                        self.stateBV.onNext(.RefreshEmpty)
-                    }else{
-                        self.stateBV.onNext(.RefreshLoadMoreNotData)
+        AF.request("\(DNS)/selectNewsList?currentPage=1&dataType=3", method: .get)
+            .responseString(completionHandler: { response in
+                switch(response.result){
+                case .failure(let failure):
+                    self.stateBV.onNext(.RefreshError("\(failure)"))
+                case .success(let success):
+                    let a = BaseRes<DataList<NewsItem>>.deserialize(from: success)
+                    if(a?.resCode != 200){
+                        self.stateBV.onNext(.RefreshError(a?.resMsg ?? ""))
+                        return
                     }
-                }else{
-                    self.stateBV.onNext(.RefreshLoadMore)
+                    let b = a?.resObject?.dateList ?? []
+                    if(a?.resObject?.totalPage == a?.resObject?.totalPage){
+                        if b.isEmpty {
+                            self.stateBV.onNext(.RefreshEmpty)
+                        }else{
+                            self.stateBV.onNext(.RefreshLoadMoreNotData)
+                        }
+                    }else{
+                        self.stateBV.onNext(.RefreshLoadMore)
+                    }
+                    self.refreshBV.onNext(b)
+                    self.curPage = 1
                 }
-                self.refreshBV.onNext(b)
-                self.curPage = 1
-        }
+            })
     }
     
     func loadMoreData(){
-        Alamofire.request(
-            "\(DNS)/selectNewsList?currentPage=\(self.curPage+1)&dataType=3",
-            method: .get)
-            .responseString { response in
-                if(response.result.isFailure){
-                    self.stateBV.onNext(.LoadMoreError(response.result.description))
-                    return
-                }
-                let a = BaseRes<DataList<NewsItem>>.deserialize(from: response.result.value)
+        AF.request("\(DNS)/selectNewsList?currentPage=\(self.curPage+1)&dataType=3", method: .get)
+        .responseString(completionHandler: {response in
+            switch(response.result){
+            case .failure(let failure):
+                self.stateBV.onNext(.LoadMoreError("\(failure)"))
+            case .success(let success):
+                let a = BaseRes<DataList<NewsItem>>.deserialize(from: success)
                 if(a?.resCode != 200){
                     self.stateBV.onNext(.LoadMoreError(a?.resMsg ?? ""))
                     return
@@ -78,6 +75,7 @@ class VideosViewModel {
                 }
                 self.loadMoreBV.onNext(a?.resObject?.dateList ?? [])
                 self.curPage = self.curPage+1
-        }
+            }
+        })
     }
 }

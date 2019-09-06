@@ -15,6 +15,7 @@ class VideoHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var videoHeaderSubject: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .default
         self.videoHeaderView.setViewShadow()
     }
 
