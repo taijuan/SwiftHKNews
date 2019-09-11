@@ -330,7 +330,7 @@
 				64C40AE622CB0E2F008F7F9A /* Sources */,
 				64C40AE722CB0E2F008F7F9A /* Frameworks */,
 				64C40AE822CB0E2F008F7F9A /* Resources */,
-				ED3F90A8201E67717754F94D /* [CP] Embed Pods Frameworks */,
+				79C68509E82EB8650D94AF9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,6 +347,9 @@
 		64C40AE222CB0E2F008F7F9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					detret,
+				);
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "郑泰捐";
@@ -398,7 +401,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		ED3F90A8201E67717754F94D /* [CP] Embed Pods Frameworks */ = {
+		79C68509E82EB8650D94AF9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

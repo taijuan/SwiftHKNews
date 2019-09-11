@@ -18,32 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_background" translatesAutoresizingMaskIntoConstraints="NO" id="20J-rj-cQs">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_background" translatesAutoresizingMaskIntoConstraints="NO" id="Ou6-jH-TMz" userLabel="image1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_logo" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-mb-vX8">
-                                <rect key="frame" x="60" y="348" width="294" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="GwS-Mr-mtI"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_logo" translatesAutoresizingMaskIntoConstraints="NO" id="bCn-oQ-r0c" userLabel="image2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BW7-mb-vX8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="H4g-k5-9cn"/>
-                            <constraint firstItem="20J-rj-cQs" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="KPE-zs-LtK"/>
-                            <constraint firstItem="20J-rj-cQs" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="MSA-7d-gES"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="BW7-mb-vX8" secondAttribute="trailing" constant="60" id="VHd-qy-BCM"/>
-                            <constraint firstItem="BW7-mb-vX8" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="60" id="Y9t-HV-Nh4"/>
-                            <constraint firstAttribute="trailing" secondItem="20J-rj-cQs" secondAttribute="trailing" id="cM2-lE-kUf"/>
-                            <constraint firstAttribute="bottom" secondItem="20J-rj-cQs" secondAttribute="bottom" id="js5-CF-8me"/>
+                            <constraint firstItem="bCn-oQ-r0c" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5C0-nl-4QI"/>
+                            <constraint firstItem="Ou6-jH-TMz" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="8vW-s1-AW0"/>
+                            <constraint firstItem="Ou6-jH-TMz" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="KAZ-eQ-A1v"/>
+                            <constraint firstItem="bCn-oQ-r0c" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:2" id="MeS-ZJ-vPv"/>
+                            <constraint firstItem="Ou6-jH-TMz" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="MfD-vk-ZjB"/>
+                            <constraint firstItem="bCn-oQ-r0c" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="fuA-ce-rF5"/>
+                            <constraint firstItem="bCn-oQ-r0c" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="qhZ-X2-hrW"/>
+                            <constraint firstItem="Ou6-jH-TMz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vDi-j6-1D0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>

@@ -15,6 +15,7 @@ target 'SwiftHKNews' do
   pod 'ESTabBarController-swift'
   pod 'IQKeyboardManagerSwift'
   pod 'JXSegmentedView'
-  pod 'Alamofire', '~> 5.0.0-rc.1'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
+#  pod 'AlamofireImage', '~> 4.0.0-beta.4'
 
 end
