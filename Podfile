@@ -16,6 +16,6 @@ target 'SwiftHKNews' do
   pod 'IQKeyboardManagerSwift'
   pod 'JXSegmentedView'
   pod 'Alamofire', '~> 5.0.0-rc.2'
-#  pod 'AlamofireImage', '~> 4.0.0-beta.4'
+  pod 'AlamofireImage', '~> 4.0.0-beta.5'
 
 end
